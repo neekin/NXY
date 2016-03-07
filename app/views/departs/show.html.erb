@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Departuretime:</strong>
+  <%= @depart.departureTime %>
+</p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @depart.destination_id %>
+</p>
+
+<p>
+  <strong>Place:</strong>
+  <%= @depart.place_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @depart.status %>
+</p>
+
+<p>
+  <strong>Truck:</strong>
+  <%= @depart.truck_id %>
+</p>
+
+<%= link_to 'Edit', edit_depart_path(@depart) %> |
+<%= link_to 'Back', departs_path %>

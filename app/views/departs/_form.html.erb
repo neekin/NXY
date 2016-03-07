@@ -1,0 +1,37 @@
+<%= form_for(@depart) do |f| %>
+  <% if @depart.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@depart.errors.count, "error") %> prohibited this depart from being saved:</h2>
+
+      <ul>
+      <% @depart.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :departureTime %><br>
+    <%= f.date_select :departureTime %>
+  </div>
+  <div class="field">
+    <%= f.label :destination_id %><br>
+    <%= f.number_field :destination_id %>
+  </div>
+  <div class="field">
+    <%= f.label :place_id %><br>
+    <%= f.number_field :place_id %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.check_box :status %>
+  </div>
+  <div class="field">
+    <%= f.label :truck_id %><br>
+    <%= f.number_field :truck_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Consignors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Company</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @consignors.each do |consignor| %>
+      <tr>
+        <td><%= consignor.name %></td>
+        <td><%= consignor.phone %></td>
+        <td><%= consignor.company_id %></td>
+        <td><%= link_to 'Show', consignor %></td>
+        <td><%= link_to 'Edit', edit_consignor_path(consignor) %></td>
+        <td><%= link_to 'Destroy', consignor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Consignor', new_consignor_path %>

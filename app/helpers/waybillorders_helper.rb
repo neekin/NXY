@@ -1,0 +1,2 @@
+module WaybillordersHelper
+end

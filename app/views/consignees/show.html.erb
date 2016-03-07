@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @consignee.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @consignee.phone %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @consignee.company_id %>
+</p>
+
+<%= link_to 'Edit', edit_consignee_path(@consignee) %> |
+<%= link_to 'Back', consignees_path %>
