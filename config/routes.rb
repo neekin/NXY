@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'page/index'
+
+  get 'page/login'
+  root 'page#index'
   resources :paymentmethods
   resources :consignees
   resources :consignors
