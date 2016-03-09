@@ -25,16 +25,41 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      cookies[:auth_token] = @user.auth_token
+      redirect_to :root
+    else
+      render :new
     end
+    # respond_to do |format|
+    #   if @user.save
+    #     format.html { redirect_to @user, notice: 'User was successfully created.' }
+    #     format.json { render :show, status: :created, location: @user }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @user.errors, status: :unprocessable_entity }
+    #   end
+    # end
+  end
+
+  def create_login_session
+    user = User.find_by_loginname(params[:loginname])
+    if user && user.authenticate(params[:password])
+      # if params[:rememberme]
+        cookies.permanent[:auth_token] =user.auth_token #持久化保存
+      # else
+      #   cookies[:auth_token] = user.auth_token #临时性保存 类似 session
+      # end
+      redirect_to :root
+    else
+      flash.notice = "用户名密码错误!"
+      redirect_to :login
+    end
+  end
+
+  def logout
+    cookies.delete(:auth_token)
+    redirect_to :login
   end
 
   # PATCH/PUT /users/1

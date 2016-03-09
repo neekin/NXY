@@ -1,2 +1,26 @@
-<h1>Page#login</h1>
-<p>Find me in app/views/page/login.html.erb</p>
+<div class="container clearfix">
+  <div class="login-form">
+    <%= form_tag "/create_login_session" do %>
+        <dl class="form">
+          <dt>
+            <%= label_tag "用户名" %>
+          </dt>
+          <dd>
+            <%= text_field_tag :loginname, params[:loginname] %>
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt>
+            <%= label_tag "密码" %>
+          </dt>
+          <dd>
+            <%= password_field_tag :password, params[:password] %>
+          </dd>
+        </dl>
+        <p> <%= submit_tag "登录", :class => "login-button btn btn-primary" %> </p>
+        <div class="need-signup">
+          <%= link_to "没有账号？注册一个吧", regent_path %>
+        </div>
+    <% end %>
+  </div>
+</div>

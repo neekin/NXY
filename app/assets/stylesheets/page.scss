@@ -2,3 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body { padding-top: 70px; }
+.notice {
+  position: absolute;
+  z-index: 1000;
+  bottom: 20px;
+  right: 20px;
+  background: teal;
+  color: white;
+  padding: 20px;
+  -webkit-box-shadow: 6px 7px 9px -1px rgba(0,0,0,0.68);
+  -moz-box-shadow: 6px 7px 9px -1px rgba(0,0,0,0.68);
+  box-shadow: 6px 7px 9px -1px rgba(0,0,0,0.68);
+}
+.login-form{
+  width: 600px;
+  margin: 0 auto;
+}
+.login-form input{
+
+   width: 400px;
+}

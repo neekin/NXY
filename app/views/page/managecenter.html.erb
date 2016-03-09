@@ -1,0 +1,16 @@
+<% if !current_user.company_id %>
+
+<div class="container">
+  <%= link_to '填写公司信息', new_company_path %>
+</div>
+<% else %>
+    <p>
+      <strong>公司名称:</strong>
+      <%= Company.find(current_user.company_id).name %>
+    </p>
+    <p>
+      <strong>联系方式:</strong>
+      <%= Company.find(current_user.company_id).phone %>
+    </p>
+    <%= link_to '修改', edit_company_path(current_user.company_id) %> | <%= link_to '返回首页' ,root_path%>
+<% end %>

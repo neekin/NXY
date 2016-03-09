@@ -1,16 +1,20 @@
 Rails.application.routes.draw do
+
+  get 'page/index'
+  get 'page/personalcenter'
+  get 'login'=> 'page#login'
+  get "regent" => "users#new", :as => "regent"
+  get "managecenter"=>"page#managecenter"
+  delete 'logout' =>'users#logout'
+  root 'page#index'
+  post "create_login_session" => "users#create_login_session"
   resources :lines
   resources :billwayorders
-  get 'page/index'
-
-  get 'page/login'
-  root 'page#index'
   resources :paymentmethods
   resources :consignees
   resources :consignors
   resources :destinations
   resources :places
-  resources :waybillorders
   resources :departs
   resources :trucks
   resources :users

@@ -24,8 +24,12 @@ class LinesController < ApplicationController
   # POST /lines
   # POST /lines.json
   def create
-    @line = Line.new(line_params)
-
+    @place = Place.find_or_create_by_name(line_params[:place])
+    @destination=Destination.find_or_create_by_name(line_params[:destination])
+    @line = Line.new
+    @line.company_id = current_user.company_id
+    @line.place_id = @place.id
+    @line.destination_id=@destination.id
     respond_to do |format|
       if @line.save
         format.html { redirect_to @line, notice: 'Line was successfully created.' }
@@ -69,6 +73,6 @@ class LinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_params
-      params.require(:line).permit(:place_id, :destination_id, :company_id)
+      params.require(:line).permit(:place, :destination)
     end
 end

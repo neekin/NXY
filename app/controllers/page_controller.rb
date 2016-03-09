@@ -4,4 +4,8 @@ class PageController < ApplicationController
 
   def login
   end
+
+  def managecenter
+
+  end
 end
