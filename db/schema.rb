@@ -11,7 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307001629) do
+ActiveRecord::Schema.define(version: 20160309192546) do
+
+  create_table "billwayorders", force: :cascade do |t|
+    t.string   "orderNum"
+    t.string   "goodsName"
+    t.integer  "number"
+    t.float    "weight"
+    t.float    "volume"
+    t.integer  "freightCost"
+    t.integer  "goodsPrice"
+    t.integer  "insuranceCost"
+    t.integer  "packingCost"
+    t.integer  "deliverCost"
+    t.integer  "acceptCost"
+    t.boolean  "isTransfer"
+    t.integer  "transferCost"
+    t.integer  "total"
+    t.integer  "consignor_id"
+    t.integer  "consignee_id"
+    t.integer  "proxycollection"
+    t.integer  "truck_id"
+    t.integer  "company_id"
+    t.integer  "user_id"
+    t.integer  "paymentmethod_id"
+    t.integer  "line_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -51,6 +78,14 @@ ActiveRecord::Schema.define(version: 20160307001629) do
     t.integer  "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "lines", force: :cascade do |t|
+    t.integer  "place_id"
+    t.integer  "destination_id"
+    t.string   "company_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "paymentmethods", force: :cascade do |t|

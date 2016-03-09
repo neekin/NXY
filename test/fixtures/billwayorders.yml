@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  orderNum: MyString
+  goodsName: MyString
+  number: 1
+  weight: 1.5
+  volume: 1.5
+  freightCost: 1
+  goodsPrice: 1
+  insuranceCost: 1
+  packingCost: 1
+  deliverCost: 1
+  acceptCost: 1
+  isTransfer: false
+  transferCost: 1
+  total: 1
+  consignor_id: 1
+  consignee_id: 1
+  proxycollection: 1
+  truck_id: 1
+  company_id: 1
+  user_id: 1
+  paymentmethod_id: 1
+  line_id: 1
+
+two:
+  orderNum: MyString
+  goodsName: MyString
+  number: 1
+  weight: 1.5
+  volume: 1.5
+  freightCost: 1
+  goodsPrice: 1
+  insuranceCost: 1
+  packingCost: 1
+  deliverCost: 1
+  acceptCost: 1
+  isTransfer: false
+  transferCost: 1
+  total: 1
+  consignor_id: 1
+  consignee_id: 1
+  proxycollection: 1
+  truck_id: 1
+  company_id: 1
+  user_id: 1
+  paymentmethod_id: 1
+  line_id: 1

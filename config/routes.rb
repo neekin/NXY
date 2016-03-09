@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :lines
+  resources :billwayorders
   get 'page/index'
 
   get 'page/login'
