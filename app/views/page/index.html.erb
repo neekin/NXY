@@ -17,6 +17,9 @@
             </div>
             <div class="panel-body">
             </div>
+            <div class="panel-footer">
+              <%= link_to '开单',new_waybillorder_path %>
+            </div>
           </div>
           <% end %>
         </div>
@@ -24,14 +27,16 @@
           <% @lines.each  do |line| %>
               <div class="panel panel-primary">
                 <div class="panel-heading">
-                  已入库车辆--<%= line.place%>--<%= line.destination%>
+                  已入库车辆 <div class="pull-right"><%= line.place%>--<%= line.destination%></div>
                 </div>
                 <div class="panel-body">
+                </div>
+                <div class="panel-footer">
+                  入库 发车
                 </div>
               </div>
           <% end %>
         </div>
-
       </div>
   <% end %>
 

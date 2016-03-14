@@ -25,7 +25,7 @@ class PaymentmethodsController < ApplicationController
   # POST /paymentmethods.json
   def create
     @paymentmethod = Paymentmethod.new(paymentmethod_params)
-
+    @paymentmethod.company_id = current_user.company_id
     respond_to do |format|
       if @paymentmethod.save
         format.html { redirect_to @paymentmethod, notice: 'Paymentmethod was successfully created.' }

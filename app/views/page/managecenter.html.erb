@@ -1,5 +1,4 @@
 <% if !current_user.company_id %>
-
 <div class="container">
   <%= link_to '填写公司信息', new_company_path %>
 </div>
@@ -15,6 +14,11 @@
     </p>
     <% if current_user.isresponsible%>
       <%= link_to '修改', edit_company_path(current_user.company_id) %> | <%= link_to '返回首页' ,root_path%>
-     <% end %>
-    </div>
+      <% end %>
+      <div>
+        <%= link_to '管理付费方式', paymentmethods_path %>
+      </div>
+</div>
+
+
 <% end %>
