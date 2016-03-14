@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :place_id %><br>
-    <%= f.text_field :place_id %>
+    <%= f.label :出发地 %><br>
+    <%= f.text_field :place %>
   </div>
   <div class="field">
-    <%= f.label :destination_id %><br>
-    <%= f.text_field :destination_id %>
+    <%= f.label :目的地 %><br>
+    <%= f.text_field :destination %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :value=>'保存' %>
   </div>
 <% end %>

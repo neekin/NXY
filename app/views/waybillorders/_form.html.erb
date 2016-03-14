@@ -1,0 +1,141 @@
+<%= form_for(@waybillorder) do |f| %>
+  <% if @waybillorder.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@waybillorder.errors.count, "error") %> prohibited this waybillorder from being saved:</h2>
+
+      <ul>
+      <% @waybillorder.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :orderNum %><br>
+    <%= f.text_field :orderNum %>
+  </div>
+  <div class="field">
+    <%= f.label :googsName1 %><br>
+    <%= f.text_field :googsName1 %>
+  </div>
+  <div class="field">
+    <%= f.label :googdName2 %><br>
+    <%= f.text_field :googdName2 %>
+  </div>
+  <div class="field">
+    <%= f.label :goodsName3 %><br>
+    <%= f.text_field :goodsName3 %>
+  </div>
+  <div class="field">
+    <%= f.label :number1 %><br>
+    <%= f.number_field :number1 %>
+  </div>
+  <div class="field">
+    <%= f.label :number2 %><br>
+    <%= f.number_field :number2 %>
+  </div>
+  <div class="field">
+    <%= f.label :number3 %><br>
+    <%= f.number_field :number3 %>
+  </div>
+  <div class="field">
+    <%= f.label :weight1 %><br>
+    <%= f.text_field :weight1 %>
+  </div>
+  <div class="field">
+    <%= f.label :weight2 %><br>
+    <%= f.text_field :weight2 %>
+  </div>
+  <div class="field">
+    <%= f.label :weight3 %><br>
+    <%= f.text_field :weight3 %>
+  </div>
+  <div class="field">
+    <%= f.label :volume1 %><br>
+    <%= f.text_field :volume1 %>
+  </div>
+  <div class="field">
+    <%= f.label :volume2 %><br>
+    <%= f.text_field :volume2 %>
+  </div>
+  <div class="field">
+    <%= f.label :volume3 %><br>
+    <%= f.text_field :volume3 %>
+  </div>
+  <div class="field">
+    <%= f.label :freightCost %><br>
+    <%= f.number_field :freightCost %>
+  </div>
+  <div class="field">
+    <%= f.label :insuranceCost %><br>
+    <%= f.number_field :insuranceCost %>
+  </div>
+  <div class="field">
+    <%= f.label :packingCost %><br>
+    <%= f.number_field :packingCost %>
+  </div>
+  <div class="field">
+    <%= f.label :deliverCost %><br>
+    <%= f.number_field :deliverCost %>
+  </div>
+  <div class="field">
+    <%= f.label :acceptCost %><br>
+    <%= f.number_field :acceptCost %>
+  </div>
+  <div class="field">
+    <%= f.label :isTransfer %><br>
+    <%= f.check_box :isTransfer %>
+  </div>
+  <div class="field">
+    <%= f.label :transferCost %><br>
+    <%= f.number_field :transferCost %>
+  </div>
+  <div class="field">
+    <%= f.label :transferDestintion %><br>
+    <%= f.text_field :transferDestintion %>
+  </div>
+  <div class="field">
+    <%= f.label :otherCost %><br>
+    <%= f.number_field :otherCost %>
+  </div>
+  <div class="field">
+    <%= f.label :total %><br>
+    <%= f.number_field :total %>
+  </div>
+  <div class="field">
+    <%= f.label :consignor_id %><br>
+    <%= f.number_field :consignor_id %>
+  </div>
+  <div class="field">
+    <%= f.label :consignee_id %><br>
+    <%= f.number_field :consignee_id %>
+  </div>
+  <div class="field">
+    <%= f.label :proxycollection %><br>
+    <%= f.number_field :proxycollection %>
+  </div>
+  <div class="field">
+    <%= f.label :truck_id %><br>
+    <%= f.number_field :truck_id %>
+  </div>
+  <div class="field">
+    <%= f.label :company_id %><br>
+    <%= f.number_field :company_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :paymentmenthod_id %><br>
+    <%= f.number_field :paymentmenthod_id %>
+  </div>
+  <div class="field">
+    <%= f.label :line_id %><br>
+    <%= f.number_field :line_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

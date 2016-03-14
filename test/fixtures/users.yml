@@ -4,12 +4,16 @@ one:
   loginname: MyString
   password_digest: MyString
   auth_token: MyString
+  isresponsible: false
   company_id: 1
   phone: MyString
+  hasline: MyString
 
 two:
   loginname: MyString
   password_digest: MyString
   auth_token: MyString
+  isresponsible: false
   company_id: 1
   phone: MyString
+  hasline: MyString

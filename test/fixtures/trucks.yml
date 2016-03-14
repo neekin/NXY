@@ -5,9 +5,11 @@ one:
   phone: MyString
   licensePlateNumber: MyString
   company_id: 1
+  line_id: 1
 
 two:
   driver: MyString
   phone: MyString
   licensePlateNumber: MyString
   company_id: 1
+  line_id: 1

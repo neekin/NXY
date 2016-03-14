@@ -1,0 +1,62 @@
+
+
+
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <h1>所有订单</h1>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>运单号</th>
+      <th>运费</th>
+      <th>保险费</th>
+      <th>打包费</th>
+      <th>送货费</th>
+      <th>提货费</th>
+      <th>是否中转</th>
+      <th>中转费</th>
+      <th>中转地</th>
+      <th>其他费用</th>
+      <th>总计</th>
+      <th>托运人</th>
+      <th>收货人</th>
+      <th>代收货款</th>
+      <th>所跟车辆</th>
+      <th>付款方式</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @waybillorders.each do |waybillorder| %>
+        <tr>
+          <td><%= waybillorder.orderNum %></td>
+          <td><%= waybillorder.freightCost %></td>
+          <td><%= waybillorder.insuranceCost %></td>
+          <td><%= waybillorder.packingCost %></td>
+          <td><%= waybillorder.deliverCost %></td>
+          <td><%= waybillorder.acceptCost %></td>
+          <td><%= waybillorder.isTransfer %></td>
+          <td><%= waybillorder.transferCost %></td>
+          <td><%= waybillorder.transferDestintion %></td>
+          <td><%= waybillorder.otherCost %></td>
+          <td><%= waybillorder.total %></td>
+          <td><%= waybillorder.consignor_id %></td>
+          <td><%= waybillorder.consignee_id %></td>
+          <td><%= waybillorder.proxycollection %></td>
+          <td><%= waybillorder.truck_id %></td>
+          <td><%= waybillorder.paymentmenthod_id %></td>
+          <td><%= link_to 'Show', waybillorder %></td>
+          <td><%= link_to 'Edit', edit_waybillorder_path(waybillorder) %></td>
+          <td><%= link_to 'Destroy', waybillorder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <br>
+
+  <%= link_to 'New Waybillorder', new_waybillorder_path %>
+
+</div>
+

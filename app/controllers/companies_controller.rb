@@ -29,6 +29,7 @@ class CompaniesController < ApplicationController
     respond_to do |format|
       if @company.save
         current_user.company_id = @company.id
+        current_user.isresponsible = true
         current_user.save
         format.html { redirect_to @company, notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }

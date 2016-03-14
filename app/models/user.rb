@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
-   has_secure_password
-     #添加用户验证
-    before_create { generate_token(:auth_token) }
+  has_secure_password
+  #添加用户验证
+  before_create { generate_token(:auth_token) }
 
   def generate_token(column)
     begin

@@ -4,6 +4,7 @@
   <%= link_to '填写公司信息', new_company_path %>
 </div>
 <% else %>
+    <div class="container">
     <p>
       <strong>公司名称:</strong>
       <%= Company.find(current_user.company_id).name %>
@@ -12,5 +13,8 @@
       <strong>联系方式:</strong>
       <%= Company.find(current_user.company_id).phone %>
     </p>
-    <%= link_to '修改', edit_company_path(current_user.company_id) %> | <%= link_to '返回首页' ,root_path%>
+    <% if current_user.isresponsible%>
+      <%= link_to '修改', edit_company_path(current_user.company_id) %> | <%= link_to '返回首页' ,root_path%>
+     <% end %>
+    </div>
 <% end %>

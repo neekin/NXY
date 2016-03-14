@@ -1,14 +1,16 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>公司名称:</strong>
   <%= @company.name %>
 </p>
 
 <p>
-  <strong>Phone:</strong>
+  <strong>联系方式:</strong>
   <%= @company.phone %>
 </p>
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+<%= link_to '修改', edit_company_path(@company) %> |
+<%= link_to '返回', managecenter_path %>
+</div>

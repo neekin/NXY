@@ -1,23 +1,23 @@
 Rails.application.routes.draw do
 
+  resources :trucks
+  resources :waybillorders
+  resources :lines
+  resources :users
   get 'page/index'
   get 'page/personalcenter'
   get 'login'=> 'page#login'
   get "regent" => "users#new", :as => "regent"
-  get "managecenter"=>"page#managecenter"
+  get "managecenter"=>"page#managecenter",:as=>"managecenter"
   delete 'logout' =>'users#logout'
   root 'page#index'
   post "create_login_session" => "users#create_login_session"
-  resources :lines
+  post "/lines/new" => "lines#create"
   resources :billwayorders
   resources :paymentmethods
   resources :consignees
   resources :consignors
-  resources :destinations
-  resources :places
   resources :departs
-  resources :trucks
-  resources :users
   resources :companies
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

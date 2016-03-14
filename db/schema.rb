@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309192546) do
+ActiveRecord::Schema.define(version: 20160314061249) do
 
   create_table "billwayorders", force: :cascade do |t|
     t.string   "orderNum"
@@ -73,29 +73,15 @@ ActiveRecord::Schema.define(version: 20160309192546) do
     t.datetime "updated_at",     null: false
   end
 
-  create_table "destinations", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "lines", force: :cascade do |t|
-    t.integer  "place_id"
-    t.integer  "destination_id"
-    t.string   "company_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "place"
+    t.string   "destination"
+    t.integer  "company_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "paymentmethods", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "places", force: :cascade do |t|
     t.string   "name"
     t.integer  "company_id"
     t.datetime "created_at", null: false
@@ -107,6 +93,7 @@ ActiveRecord::Schema.define(version: 20160309192546) do
     t.string   "phone"
     t.string   "licensePlateNumber"
     t.integer  "company_id"
+    t.integer  "line_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
@@ -115,38 +102,48 @@ ActiveRecord::Schema.define(version: 20160309192546) do
     t.string   "loginname"
     t.string   "password_digest"
     t.string   "auth_token"
+    t.boolean  "isresponsible"
     t.integer  "company_id"
     t.string   "phone"
+    t.string   "hasline"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
   create_table "waybillorders", force: :cascade do |t|
-    t.string   "ordernum"
-    t.string   "goodsname"
-    t.integer  "number"
-    t.float    "weight"
-    t.float    "volume"
+    t.string   "orderNum"
+    t.string   "googsName1"
+    t.string   "googdName2"
+    t.string   "goodsName3"
+    t.integer  "number1"
+    t.integer  "number2"
+    t.integer  "number3"
+    t.float    "weight1"
+    t.float    "weight2"
+    t.float    "weight3"
+    t.float    "volume1"
+    t.float    "volume2"
+    t.float    "volume3"
     t.integer  "freightCost"
-    t.integer  "goodsPrice"
     t.integer  "insuranceCost"
     t.integer  "packingCost"
     t.integer  "deliverCost"
     t.integer  "acceptCost"
     t.boolean  "isTransfer"
     t.integer  "transferCost"
+    t.string   "transferDestintion"
+    t.integer  "otherCost"
     t.integer  "total"
-    t.integer  "place_id"
-    t.integer  "destination_id"
     t.integer  "consignor_id"
     t.integer  "consignee_id"
     t.integer  "proxycollection"
     t.integer  "truck_id"
     t.integer  "company_id"
     t.integer  "user_id"
-    t.integer  "paymentmethod_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "paymentmenthod_id"
+    t.integer  "line_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
 end

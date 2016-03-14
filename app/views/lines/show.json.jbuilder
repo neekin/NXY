@@ -1,1 +1,1 @@
-json.extract! @line, :id, :place_id, :destination_id, :company_id, :created_at, :updated_at
+json.extract! @line, :id, :place, :destination, :company_id, :created_at, :updated_at

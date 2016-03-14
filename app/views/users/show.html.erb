@@ -16,6 +16,11 @@
 </p>
 
 <p>
+  <strong>Isresponsible:</strong>
+  <%= @user.isresponsible %>
+</p>
+
+<p>
   <strong>Company:</strong>
   <%= @user.company_id %>
 </p>
@@ -23,6 +28,11 @@
 <p>
   <strong>Phone:</strong>
   <%= @user.phone %>
+</p>
+
+<p>
+  <strong>Hasline:</strong>
+  <%= @user.hasline %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

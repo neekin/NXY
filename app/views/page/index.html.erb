@@ -7,78 +7,32 @@
   <h1>还没有公司，赶紧在管理中心写上公司名字开展业务吧^_^</h1>
   <% elsif Company.find(current_user.company_id).lines.count ==0 %>
   <h1>还没有线路，添加线路</h1>
-  <% end %>
-   <!--<div class="row">-->
-     <!--<div class="col-xs-6">-->
+  <% else %>
+      <div class="row">
+        <div class="col-xs-6">
+          <% @lines.each  do |line| %>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              未装车运输单 <div class="pull-right"><%= line.place%>--<%= line.destination%></div>
+            </div>
+            <div class="panel-body">
+            </div>
+          </div>
+          <% end %>
+        </div>
+        <div class="col-xs-6">
+          <% @lines.each  do |line| %>
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  已入库车辆--<%= line.place%>--<%= line.destination%>
+                </div>
+                <div class="panel-body">
+                </div>
+              </div>
+          <% end %>
+        </div>
 
-       <!--<div class="panel panel-primary">-->
-       <!--<div class="panel-heading">-->
-         <!--未装车运输单&#45;&#45;成都-->
-       <!--</div>-->
-       <!--<div class="panel-body">-->
-           <!--<div class="row">-->
-             <!--asdf-->
-           <!--</div>-->
-           <!--<div class="row">asdf</div>-->
-         <!--</div>-->
-       <!--</div>-->
-       <!--<div class="panel panel-primary">-->
-         <!--<div class="panel-heading">-->
-           <!--未装车运输单&#45;&#45;重庆-->
-         <!--</div>-->
-         <!--<div class="panel-body">-->
-           <!--<div class="row">-->
-             <!--asdf-->
-           <!--</div>-->
-           <!--<div class="row">asdf</div>-->
-         <!--</div>-->
-       <!--</div>-->
-       <!--<div class="panel panel-primary">-->
-         <!--<div class="panel-heading">-->
-           <!--未装车运输单&#45;&#45;成都-->
-         <!--</div>-->
-         <!--<div class="panel-body">-->
-           <!--<div class="row">-->
-             <!--asdf-->
-           <!--</div>-->
-           <!--<div class="row">asdf</div>-->
-         <!--</div>-->
-       <!--</div>-->
-       <!--<div class="panel panel-primary">-->
-         <!--<div class="panel-heading">-->
-           <!--未装车运输单&#45;&#45;重庆-->
-         <!--</div>-->
-         <!--<div class="panel-body">-->
-           <!--<div class="row">-->
-             <!--asdf-->
-           <!--</div>-->
-           <!--<div class="row">asdf</div>-->
-         <!--</div>-->
-       <!--</div>-->
-     <!--</div>-->
-     <!--<div class="col-xs-6">-->
-       <!--<div class="panel panel-primary">-->
-         <!--<div class="panel-heading">-->
-           <!--已入库车辆&#45;&#45;成都-->
-         <!--</div>-->
-         <!--<div class="panel-body">-->
-           <!--<div class="row">-->
-             <!--asdf-->
-           <!--</div>-->
-           <!--<div class="row">asdf</div>-->
-         <!--</div>-->
-       <!--</div>-->
-       <!--<div class="panel panel-primary">-->
-         <!--<div class="panel-heading">-->
-           <!--已入库车辆&#45;&#45;重庆-->
-         <!--</div>-->
-         <!--<div class="panel-body">-->
-           <!--<div class="row">-->
-             <!--asdf-->
-           <!--</div>-->
-           <!--<div class="row">asdf</div>-->
-         <!--</div>-->
-       <!--</div>-->
-     <!--</div>-->
-   <!--</div>-->
+      </div>
+  <% end %>
+
 </div>

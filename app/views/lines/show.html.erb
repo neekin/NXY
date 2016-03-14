@@ -1,19 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Place:</strong>
-  <%= @line.place_id %>
-</p>
+    <p>
+      <strong>始发地:</strong>
+      <%= @line.place %>
+    </p>
 
-<p>
-  <strong>Destination:</strong>
-  <%= @line.destination_id %>
-</p>
+    <p>
+      <strong>目的地:</strong>
+      <%= @line.destination %>
+    </p>
 
-<p>
-  <strong>Company:</strong>
-  <%= @line.company_id %>
-</p>
 
-<%= link_to 'Edit', edit_line_path(@line) %> |
-<%= link_to 'Back', lines_path %>
+    <%= link_to '编辑', edit_line_path(@line) %> |
+    <%= link_to '返回', lines_path %>
+</div>
