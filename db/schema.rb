@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314061249) do
+ActiveRecord::Schema.define(version: 20160314161636) do
 
   create_table "billwayorders", force: :cascade do |t|
     t.string   "orderNum"
@@ -144,6 +144,7 @@ ActiveRecord::Schema.define(version: 20160314061249) do
     t.integer  "line_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "ThatValue"
   end
 
 end
