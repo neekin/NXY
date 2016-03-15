@@ -1,15 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  departureTime: 2016-03-06
-  destination_id: 1
-  place_id: 1
+  departureTime: 2016-03-15
+  line_id: 1
   status: false
   truck_id: 1
 
 two:
-  departureTime: 2016-03-06
-  destination_id: 1
-  place_id: 1
+  departureTime: 2016-03-15
+  line_id: 1
   status: false
   truck_id: 1

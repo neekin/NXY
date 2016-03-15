@@ -1,15 +1,16 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Trucks</h1>
+<h1>车辆管理</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Driver</th>
-      <th>Phone</th>
-      <th>Licenseplatenumber</th>
-      <th>Company</th>
-      <th>Line</th>
+      <th>司机</th>
+      <th>电话</th>
+      <th>车牌号码</th>
+      <th></th>
+      <th></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,9 +21,8 @@
         <td><%= truck.driver %></td>
         <td><%= truck.phone %></td>
         <td><%= truck.licensePlateNumber %></td>
-        <td><%= truck.company_id %></td>
-        <td><%= truck.line_id %></td>
-        <td><%= link_to 'Show', truck %></td>
+        <td><%= link_to '查看', truck %></td>
+        <td><%= link_to '入库', truck %></td>
         <td><%= link_to 'Edit', edit_truck_path(truck) %></td>
         <td><%= link_to 'Destroy', truck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -32,4 +32,5 @@
 
 <br>
 
-<%= link_to 'New Truck', new_truck_path %>
+<%= link_to '新增车辆', new_truck_path %>
+</div>

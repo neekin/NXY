@@ -1,13 +1,14 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Users</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Loginname</th>
-      <th>Password digest</th>
-      <th>Auth token</th>
+
+
       <th>Isresponsible</th>
       <th>Company</th>
       <th>Phone</th>
@@ -20,12 +21,9 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.loginname %></td>
-        <td><%= user.password_digest %></td>
-        <td><%= user.auth_token %></td>
-        <td><%= user.isresponsible %></td>
-        <td><%= user.company_id %></td>
+        <td><%=  user.isresponsible %></td>
+        <td><%= Company.find(user.company_id).name %></td>
         <td><%= user.phone %></td>
-        <td><%= user.hasline %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -37,3 +35,4 @@
 <br>
 
 <%= link_to 'New User', new_user_path %>
+</div>

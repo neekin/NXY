@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :departs
   resources :trucks
   resources :waybillorders
   resources :lines
@@ -13,11 +14,9 @@ Rails.application.routes.draw do
   root 'page#index'
   post "create_login_session" => "users#create_login_session"
   post "/lines/new" => "lines#create"
-  resources :billwayorders
   resources :paymentmethods
   resources :consignees
   resources :consignors
-  resources :departs
   resources :companies
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

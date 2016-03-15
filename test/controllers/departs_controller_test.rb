@@ -18,7 +18,7 @@ class DepartsControllerTest < ActionController::TestCase
 
   test "should create depart" do
     assert_difference('Depart.count') do
-      post :create, depart: { departureTime: @depart.departureTime, destination_id: @depart.destination_id, place_id: @depart.place_id, status: @depart.status, truck_id: @depart.truck_id }
+      post :create, depart: { departureTime: @depart.departureTime, line_id: @depart.line_id, status: @depart.status, truck_id: @depart.truck_id }
     end
 
     assert_redirected_to depart_path(assigns(:depart))
@@ -35,7 +35,7 @@ class DepartsControllerTest < ActionController::TestCase
   end
 
   test "should update depart" do
-    patch :update, id: @depart, depart: { departureTime: @depart.departureTime, destination_id: @depart.destination_id, place_id: @depart.place_id, status: @depart.status, truck_id: @depart.truck_id }
+    patch :update, id: @depart, depart: { departureTime: @depart.departureTime, line_id: @depart.line_id, status: @depart.status, truck_id: @depart.truck_id }
     assert_redirected_to depart_path(assigns(:depart))
   end
 

@@ -25,7 +25,7 @@ class DepartsController < ApplicationController
   # POST /departs.json
   def create
     @depart = Depart.new(depart_params)
-
+    @depart.company_id = current_user.company_id
     respond_to do |format|
       if @depart.save
         format.html { redirect_to @depart, notice: 'Depart was successfully created.' }
@@ -69,6 +69,6 @@ class DepartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def depart_params
-      params.require(:depart).permit(:departureTime, :destination_id, :place_id, :status, :truck_id)
+      params.require(:depart).permit(:departureTime, :line_id, :status, :truck_id)
     end
 end

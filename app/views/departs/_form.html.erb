@@ -12,24 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :departureTime %><br>
+    <%= f.label '入库时间' %><br>
     <%= f.date_select :departureTime %>
   </div>
   <div class="field">
-    <%= f.label :destination_id %><br>
-    <%= f.number_field :destination_id %>
+    <%= f.label '线路' %><br>
+    <%= f.select :line_id, Line.where(:company_id=>current_user.company_id).all.collect{ |l| [l.place+'---'+l.destination,l.id] } %>
   </div>
   <div class="field">
-    <%= f.label :place_id %><br>
-    <%= f.number_field :place_id %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.check_box :status %>
-  </div>
-  <div class="field">
-    <%= f.label :truck_id %><br>
-    <%= f.number_field :truck_id %>
+    <%= f.label :车辆 %><br>
+    <%= f.select :truck_id, Truck.where(:company_id=>current_user.company_id).all.collect{ |t| [t.driver+'---'+t.licensePlateNumber,t.id] } %>
   </div>
   <div class="actions">
     <%= f.submit %>

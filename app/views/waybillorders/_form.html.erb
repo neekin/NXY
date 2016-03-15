@@ -25,9 +25,10 @@
     <%= f.label :体积 %>
     <%= f.text_field :volume1 %>
   </div>
-    <a  role="button" data-toggle="collapse" href="#moregoods" aria-expanded="false" aria-controls="moregoods">
+    <a  class="btn btn-primary" role="button" data-toggle="collapse" href="#moregoods" aria-expanded="false" aria-controls="moregoods">
       更多货物
     </a>
+    <hr>
     <div class="collapse" id="moregoods">
     <div class="field">
       <%= f.label :货物名称 %>
@@ -60,27 +61,18 @@
       <%= f.label :运费 %>
       <%= f.number_field :freightCost %>
     </div>
-    <a  role="button" data-toggle="collapse" href="#moreCost" aria-expanded="false" aria-controls="moreCost">
+    <hr>
+    <a class="btn btn-primary" role="button" data-toggle="collapse" href="#moreCost" aria-expanded="false" aria-controls="moreCost">
       其他费目
     </a>
-  <div class="collapse" id="moreCost">
-      <div class="field">
-    <%= f.label :提货费 %>
-    <%= f.number_field :deliverCost %>
-    <%= f.label :送货费 %>
-    <%= f.number_field :acceptCost %>
-    <%= f.label :打包费 %>
-    <%= f.number_field :packingCost %>
-  </div>
-      <div class="field">
-      <%= f.label :其他费用 %>
-      <%= f.number_field :otherCost %>
-    </div>
-  </div>
-    <br>
-   <a role="button" data-toggle="collapse" href="#Transfer" aria-expanded="false" aria-controls="Transfer">
-     中转明细
+    <a class="btn btn-primary" role="button" data-toggle="collapse" href="#Transfer" aria-expanded="false" aria-controls="Transfer">
+      中转明细
     </a>
+    <a class="btn btn-primary" role="button" data-toggle="collapse" href="#insurance" aria-expanded="false" aria-controls="insurance">
+      保险
+    </a>
+    <br>
+    <hr>
 
 
     <div class="collapse" id="Transfer">
@@ -93,15 +85,28 @@
         <%= f.text_field :transferDestintion %>
       </div>
     </div>
-    <br>
-    <a role="button" data-toggle="collapse" href="#insurance" aria-expanded="false" aria-controls="insurance">保险</a>
-    <div class="collapse" id="insurance">
-    <div class="field">
-    <%= f.label :声明价值 %>
-    <%= f.number_field :ThatValue %>
-    <%= f.label :保险费 %>
-    <%= f.number_field :insuranceCost %>
+    <div class="collapse" id="moreCost">
+      <div class="field">
+        <%= f.label :提货费 %>
+        <%= f.number_field :deliverCost %>
+        <%= f.label :送货费 %>
+        <%= f.number_field :acceptCost %>
+        <%= f.label :打包费 %>
+        <%= f.number_field :packingCost %>
+      </div>
+      <div class="field">
+        <%= f.label :其他费用 %>
+        <%= f.number_field :otherCost %>
+      </div>
     </div>
+
+    <div class="collapse" id="insurance">
+      <div class="field">
+      <%= f.label :声明价值 %>
+      <%= f.number_field :ThatValue %>
+      <%= f.label :保险费 %>
+      <%= f.number_field :insuranceCost %>
+      </div>
     </div>
   <div class="field">
     <%= f.label :代收货款 %>
@@ -111,9 +116,9 @@
 
   <div class="field">
     <%= f.label :路线 %>
-    <%= f.select  :line_id ,Line.where(:company_id=>current_user.company_id).all.collect{ |l| [l.place+'--'+l.destination,l.id] } %>
+    <%= f.select  :line_id ,Line.where(:company_id=>current_user.company_id).all.collect{ |l| [l.place+'--'+l.destination,l.id] }  %>
     <%= f.label :跟随车辆 %>
-    <%= f.number_field :truck_id %>
+    <%= f.select :truck_id ,Depart.where(:company_id =>current_user.company_id , :status=>false,:line_id=>:line_id).all.collect{|d| [Truck.find(d.truck_id).licensePlateNumber,d.id]} %>
   </div>
     <div class="field">
       <%= f.label :付款方式 %>
@@ -126,3 +131,13 @@
     <%= f.submit :value=>'开单',:class=>'btn btn-danger' %>
   </div>
 <% end %>
+
+<script>
+  $(function(){
+   $("#waybillorder_line_id").on("change",function(){
+     $item  = $(this);
+     alert($item.val());
+   })
+  })
+
+</script>

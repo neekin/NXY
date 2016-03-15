@@ -113,6 +113,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if current_user
       @user.company_id = current_user.company_id
+    else
+      @company = Company.new(:name=>'物流公司',:phone=>'123456')
+      @company.save
+      @user.company_id=@company.id
+      @user.isresponsible = true
     end
     if @user.save
       if !current_user
