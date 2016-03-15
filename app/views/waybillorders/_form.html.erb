@@ -61,20 +61,18 @@
       <%= f.number_field :freightCost %>
     </div>
     <a  role="button" data-toggle="collapse" href="#moreCost" aria-expanded="false" aria-controls="moreCost">
-      其他收费
+      其他费目
     </a>
   <div class="collapse" id="moreCost">
-  <div class="field">
+      <div class="field">
     <%= f.label :提货费 %>
     <%= f.number_field :deliverCost %>
     <%= f.label :送货费 %>
     <%= f.number_field :acceptCost %>
-    <%= f.label :保险费 %>
-    <%= f.number_field :insuranceCost %>
     <%= f.label :打包费 %>
     <%= f.number_field :packingCost %>
   </div>
-   <div class="field">
+      <div class="field">
       <%= f.label :其他费用 %>
       <%= f.number_field :otherCost %>
     </div>
@@ -83,6 +81,8 @@
    <a role="button" data-toggle="collapse" href="#Transfer" aria-expanded="false" aria-controls="Transfer">
      中转明细
     </a>
+
+
     <div class="collapse" id="Transfer">
       <div class="field">
         <%= f.label :是否中转 %>
@@ -93,7 +93,16 @@
         <%= f.text_field :transferDestintion %>
       </div>
     </div>
-
+    <br>
+    <a role="button" data-toggle="collapse" href="#insurance" aria-expanded="false" aria-controls="insurance">保险</a>
+    <div class="collapse" id="insurance">
+    <div class="field">
+    <%= f.label :声明价值 %>
+    <%= f.number_field :ThatValue %>
+    <%= f.label :保险费 %>
+    <%= f.number_field :insuranceCost %>
+    </div>
+    </div>
   <div class="field">
     <%= f.label :代收货款 %>
     <%= f.number_field :proxycollection %>
