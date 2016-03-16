@@ -28,36 +28,35 @@
     <a  class="btn btn-primary" role="button" data-toggle="collapse" href="#moregoods" aria-expanded="false" aria-controls="moregoods">
       更多货物
     </a>
-    <hr>
     <div class="collapse" id="moregoods">
-    <div class="field">
-      <%= f.label :货物名称 %>
-      <%= f.text_field :googdName2 %>
-      <%= f.label :件数 %>
-      <%= f.number_field :number2 %>
-      <%= f.label :重量 %>
-      <%= f.text_field :weight2 %>
-      <%= f.label :体积 %>
-      <%= f.text_field :volume2 %>
+      <div class="field">
+        <%= f.label :货物名称 %>
+        <%= f.text_field :googdName2 %>
+        <%= f.label :件数 %>
+        <%= f.number_field :number2 %>
+        <%= f.label :重量 %>
+        <%= f.text_field :weight2 %>
+        <%= f.label :体积 %>
+        <%= f.text_field :volume2 %>
+      </div>
+      <div class="field">
+        <%= f.label :货物名称 %>
+        <%= f.text_field :goodsName3 %>
+        <%= f.label :件数 %>
+        <%= f.number_field :number3 %>
+        <%= f.label :重量 %>
+        <%= f.text_field :weight3 %>
+        <%= f.label :体积 %>
+        <%= f.text_field :volume3 %>
+      </div>
     </div>
-    <div class="field">
-      <%= f.label :货物名称 %>
-      <%= f.text_field :goodsName3 %>
-      <%= f.label :件数 %>
-      <%= f.number_field :number3 %>
-      <%= f.label :重量 %>
-      <%= f.text_field :weight3 %>
-      <%= f.label :体积 %>
-      <%= f.text_field :volume3 %>
-    </div>
-    </div>
+    <hr>
+
     <div class="field">
       <%= f.label :托运人 %>
       <%= f.number_field :consignor_id %>
       <%= f.label :收货人 %>
       <%= f.number_field :consignee_id %>
-    </div>
-    <div class="field">
       <%= f.label :运费 %>
       <%= f.number_field :freightCost %>
     </div>
@@ -108,36 +107,30 @@
       <%= f.number_field :insuranceCost %>
       </div>
     </div>
-  <div class="field">
-    <%= f.label :代收货款 %>
-    <%= f.number_field :proxycollection %>
-  </div>
+
 
 
   <div class="field">
     <%= f.label :路线 %>
-    <%= f.select  :line_id ,Line.where(:company_id=>current_user.company_id).all.collect{ |l| [l.place+'--'+l.destination,l.id] }  %>
+    <%= f.select  :line_id ,@lines.collect{
+        |l| [l.place+'--'+l.destination,l.id]
+    } %>
     <%= f.label :跟随车辆 %>
-    <%= f.select :truck_id ,Depart.where(:company_id =>current_user.company_id , :status=>false,:line_id=>:line_id).all.collect{|d| [Truck.find(d.truck_id).licensePlateNumber,d.id]} %>
+    <%= f.select :truck_id ,@departs.collect{
+        |d| [Truck.find(d.truck_id).licensePlateNumber,d.id]
+    } %>
   </div>
+    <hr>
     <div class="field">
       <%= f.label :付款方式 %>
       <%= f.select :paymentmenthod_id, Paymentmethod.where(:company_id=>current_user.company_id).all.collect{ |p| [p.name,p.id] } %>
       <%= f.label :总计 %>
       <%= f.number_field :total, :readonly => true%>
+        <%= f.label :代收货款 %>
+        <%= f.number_field :proxycollection %>
     </div>
 
   <div class="actions">
-    <%= f.submit :value=>'开单',:class=>'btn btn-danger' %>
+    <%= f.submit :value=>'保存',:class=>'btn btn-danger' %>
   </div>
 <% end %>
-
-<script>
-  $(function(){
-   $("#waybillorder_line_id").on("change",function(){
-     $item  = $(this);
-     alert($item.val());
-   })
-  })
-
-</script>

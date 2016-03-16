@@ -1,159 +1,103 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
+  <style>
+    td{
+      font-size: 18px;
+    }
+  </style>
+<table class="table">
+  <tbody>
+  <tr>
+    <td><strong>货运单号:</strong></td>
+    <td>  <%= @waybillorder.orderNum %></td>
+    <td>  <strong>发往:</strong> </td>
+    <td>   <%= Line.find(@waybillorder.line_id).destination %></td>
+    <td> <strong>发货人:</strong></td>
+    <td>  <%= @waybillorder.consignor_id %></td>
+    <td>  <strong>收货人:</strong></td>
+    <td> <%= @waybillorder.consignee_id %></td>
+  </tr>
+  <tr>
+    <td>  <strong>货物名称:</strong></td>
+    <td>  <%= @waybillorder.googsName1 %></td>
+    <td>  <strong>件数:</strong></td>
+    <td>  <%= @waybillorder.number1 %></td>
+    <td> <strong>体积:</strong></td>
+    <td>   <%= @waybillorder.weight1 %></td>
+    <td> <strong>重量:</strong></td>
+    <td>   <%= @waybillorder.volume1 %></td>
+  </tr>
+  <% if @waybillorder.googdName2?  %>
+  <tr>
+    <td>  <strong>货物名称:</strong></td>
+    <td>  <%= @waybillorder.googdName2 %></td>
+    <td>  <strong>件数:</strong></td>
+    <td>  <%= @waybillorder.number2 %></td>
+    <td> <strong>体积:</strong></td>
+    <td>   <%= @waybillorder.weight2 %></td>
+    <td> <strong>重量:</strong></td>
+    <td>   <%= @waybillorder.volume2 %></td>
+  </tr>
+  <% end %>
+  <% if @waybillorder.goodsName3?  %>
+  <tr>
+    <td>  <strong>货物名称:</strong></td>
+    <td>  <%= @waybillorder.goodsName3 %></td>
+    <td>  <strong>件数:</strong></td>
+    <td>  <%= @waybillorder.number3 %></td>
+    <td> <strong>体积:</strong></td>
+    <td>   <%= @waybillorder.weight3 %></td>
+    <td> <strong>重量:</strong></td>
+    <td>   <%= @waybillorder.volume3 %></td>
+  </tr>
+  <% end %>
+  <tr>
+    <td> <strong>运费:</strong></td>
+    <td> <%= @waybillorder.freightCost %></td>
+    <td>  <strong>打包费:</strong></td>
+    <td>  <%= @waybillorder.packingCost %></td>
+    <td> <strong>送货费:</strong></td>
+    <td>   <%= @waybillorder.deliverCost %></td>
+    <td> <strong>提货费:</strong></td>
+    <td>  <%= @waybillorder.acceptCost %></td>
+  </tr>
+  <tr>
 
-<p>
-  <strong>Ordernum:</strong>
-  <%= @waybillorder.orderNum %>
-</p>
+    <td> <strong>是否中转:</strong></td>
+    <td> <%= @waybillorder.isTransfer %></td>
+    <td>  <strong>中转费:</strong></td>
+    <td> <%= @waybillorder.transferCost %></td>
+    <td> <strong>中转目的地:</strong></td>
+    <td colspan="3">  <%= @waybillorder.transferDestintion %></td>
 
-<p>
-  <strong>Googsname1:</strong>
-  <%= @waybillorder.googsName1 %>
-</p>
+  </tr>
+  <tr>
+    <td>  <strong>其他收费:</strong></td>
+    <td>  <%= @waybillorder.otherCost %></td>
+    <td>  <strong>代收款:</strong></td>
+    <td>  <%= @waybillorder.proxycollection %></td>
+    <td>  <strong>付款方式:</strong></td>
+    <td colspan="3">   <%= @waybillorder.paymentmenthod_id %></td>
+  </tr>
+  <tr>
+    <td><strong>声明价值</strong></td>
+    <td><%= @waybillorder.ThatValue %></td>
+    <td>  <strong>保险费:</strong></td>
+    <td>   <%= @waybillorder.insuranceCost %></td>
+    <td> <strong>总计:</strong></td>
+    <td>  <%= @waybillorder.total %></td>
+    <td>  <strong>开票人:</strong></td>
+    <td>  <%= @waybillorder.user_id %></td>
+  </tr>
+  </tbody>
 
-<p>
-  <strong>Googdname2:</strong>
-  <%= @waybillorder.googdName2 %>
-</p>
 
-<p>
-  <strong>Goodsname3:</strong>
-  <%= @waybillorder.goodsName3 %>
-</p>
+</table>
 
-<p>
-  <strong>Number1:</strong>
-  <%= @waybillorder.number1 %>
-</p>
 
-<p>
-  <strong>Number2:</strong>
-  <%= @waybillorder.number2 %>
-</p>
 
-<p>
-  <strong>Number3:</strong>
-  <%= @waybillorder.number3 %>
-</p>
 
-<p>
-  <strong>Weight1:</strong>
-  <%= @waybillorder.weight1 %>
-</p>
-
-<p>
-  <strong>Weight2:</strong>
-  <%= @waybillorder.weight2 %>
-</p>
-
-<p>
-  <strong>Weight3:</strong>
-  <%= @waybillorder.weight3 %>
-</p>
-
-<p>
-  <strong>Volume1:</strong>
-  <%= @waybillorder.volume1 %>
-</p>
-
-<p>
-  <strong>Volume2:</strong>
-  <%= @waybillorder.volume2 %>
-</p>
-
-<p>
-  <strong>Volume3:</strong>
-  <%= @waybillorder.volume3 %>
-</p>
-
-<p>
-  <strong>Freightcost:</strong>
-  <%= @waybillorder.freightCost %>
-</p>
-
-<p>
-  <strong>Insurancecost:</strong>
-  <%= @waybillorder.insuranceCost %>
-</p>
-
-<p>
-  <strong>Packingcost:</strong>
-  <%= @waybillorder.packingCost %>
-</p>
-
-<p>
-  <strong>Delivercost:</strong>
-  <%= @waybillorder.deliverCost %>
-</p>
-
-<p>
-  <strong>Acceptcost:</strong>
-  <%= @waybillorder.acceptCost %>
-</p>
-
-<p>
-  <strong>Istransfer:</strong>
-  <%= @waybillorder.isTransfer %>
-</p>
-
-<p>
-  <strong>Transfercost:</strong>
-  <%= @waybillorder.transferCost %>
-</p>
-
-<p>
-  <strong>Transferdestintion:</strong>
-  <%= @waybillorder.transferDestintion %>
-</p>
-
-<p>
-  <strong>Othercost:</strong>
-  <%= @waybillorder.otherCost %>
-</p>
-
-<p>
-  <strong>Total:</strong>
-  <%= @waybillorder.total %>
-</p>
-
-<p>
-  <strong>Consignor:</strong>
-  <%= @waybillorder.consignor_id %>
-</p>
-
-<p>
-  <strong>Consignee:</strong>
-  <%= @waybillorder.consignee_id %>
-</p>
-
-<p>
-  <strong>Proxycollection:</strong>
-  <%= @waybillorder.proxycollection %>
-</p>
-
-<p>
-  <strong>Truck:</strong>
-  <%= @waybillorder.truck_id %>
-</p>
-
-<p>
-  <strong>Company:</strong>
-  <%= @waybillorder.company_id %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @waybillorder.user_id %>
-</p>
-
-<p>
-  <strong>Paymentmenthod:</strong>
-  <%= @waybillorder.paymentmenthod_id %>
-</p>
-
-<p>
-  <strong>Line:</strong>
-  <%= @waybillorder.line_id %>
-</p>
-
-<%= link_to 'Edit', edit_waybillorder_path(@waybillorder) %> |
-<%= link_to 'Back', waybillorders_path %>
+<%= link_to '编辑', edit_waybillorder_path(@waybillorder) %> |
+<%= link_to '打印', edit_waybillorder_path(@waybillorder) %> |
+<%= link_to '返回', waybillorders_path %>
+</div>

@@ -15,10 +15,14 @@ class WaybillordersController < ApplicationController
   # GET /waybillorders/new
   def new
     @waybillorder = Waybillorder.new
+    @lines = Line.where(:company_id => current_user.company_id).all
+    @departs = Depart.where("line_id = ?",@lines.first.id)
   end
 
   # GET /waybillorders/1/edit
   def edit
+    @lines = Line.where(:company_id => current_user.company_id).all
+    @departs = Depart.where("line_id = ?",@lines.first.id)
   end
 
   # POST /waybillorders
@@ -60,6 +64,14 @@ class WaybillordersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def update_departs
+    @departs = Depart.where(:line_id =>params[:line_id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

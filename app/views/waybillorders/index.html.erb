@@ -4,7 +4,7 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
 
-  <h1>所有订单</h1>
+  <h1>所有运单</h1>
   <table class="table">
     <thead>
     <tr>
@@ -37,7 +37,7 @@
           <td><%= waybillorder.packingCost %></td>
           <td><%= waybillorder.deliverCost %></td>
           <td><%= waybillorder.acceptCost %></td>
-          <td><%= waybillorder.isTransfer %></td>
+          <td><%= waybillorder.isTransfer == true ?"中转":"" %></td>
           <td><%= waybillorder.transferCost %></td>
           <td><%= waybillorder.transferDestintion %></td>
           <td><%= waybillorder.otherCost %></td>
@@ -47,9 +47,10 @@
           <td><%= waybillorder.proxycollection %></td>
           <td><%= waybillorder.truck_id %></td>
           <td><%= waybillorder.paymentmenthod_id %></td>
-          <td><%= link_to 'Show', waybillorder %></td>
-          <td><%= link_to 'Edit', edit_waybillorder_path(waybillorder) %></td>
-          <td><%= link_to 'Destroy', waybillorder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to '装车', waybillorder %></td>
+          <td><%= link_to '查看', waybillorder %></td>
+          <td><%= link_to '编辑', edit_waybillorder_path(waybillorder) %></td>
+          <td><%= link_to '删除', waybillorder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
     <% end %>
     </tbody>

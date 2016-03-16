@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :departs
   resources :trucks
+  get 'waybillorders/update_departs' => 'waybillorders#update_departs' ,:as=>'update_departs',:defaults => { :format => 'js' }
   resources :waybillorders
   resources :lines
   resources :users
