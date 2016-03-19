@@ -12,17 +12,31 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :姓名 %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br>
+    <%= f.label :联系方式 %><br>
     <%= f.text_field :phone %>
   </div>
   <div class="field">
-    <%= f.label :company_id %><br>
-    <%= f.number_field :company_id %>
+    <%= f.label :地址 %><br>
+    <%= f.text_field :address %>
   </div>
+    <div class="field">
+      <%= f.label :目的地 %><br>
+    <%= f.select  :line_id ,@lines.collect{
+                                   |l| [l.destination,l.id]
+                           } %>
+    </div>
+    <div class="field">
+      <%= f.label :每公斤收费 %><br>
+      <%= f.text_field :weight %>
+    </div>
+    <div class="field">
+      <%= f.label :每立方收费 %><br>
+      <%= f.text_field :volume %>
+    </div>
   <div class="actions">
     <%= f.submit %>
   </div>

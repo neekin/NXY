@@ -15,15 +15,26 @@
     <%= f.label :orderNum %>
     <%= f.text_field :orderNum %>
   </div>-->
+    <div class="field">
+      <%= f.label :路线 %>
+      <%= f.select  :line_id ,@lines.collect{
+                                     |l| [l.place+'--'+l.destination,l.id]
+                             } %>
+      <%= f.label :跟随车辆 %>
+      <%= f.select :truck_id ,@departs.collect{
+                                     |d| [Truck.find(d.truck_id).licensePlateNumber,d.id]
+                             } %>
+    </div>
+    <hr>
   <div class="field">
     <%= f.label :货物名称 %>
     <%= f.text_field :googsName1 %>
     <%= f.label :件数 %>
     <%= f.number_field :number1 %>
     <%= f.label :重量 %>
-    <%= f.text_field :weight1 %>
+    <%= f.text_field :weight1 ,:class=>"freight" %>
     <%= f.label :体积 %>
-    <%= f.text_field :volume1 %>
+    <%= f.text_field :volume1  ,:class=>"freight"%>
   </div>
     <a  class="btn btn-primary" role="button" data-toggle="collapse" href="#moregoods" aria-expanded="false" aria-controls="moregoods">
       更多货物
@@ -35,9 +46,9 @@
         <%= f.label :件数 %>
         <%= f.number_field :number2 %>
         <%= f.label :重量 %>
-        <%= f.text_field :weight2 %>
+        <%= f.text_field :weight2  ,:class=>"freight"%>
         <%= f.label :体积 %>
-        <%= f.text_field :volume2 %>
+        <%= f.text_field :volume2 ,:class=>"freight" %>
       </div>
       <div class="field">
         <%= f.label :货物名称 %>
@@ -45,20 +56,23 @@
         <%= f.label :件数 %>
         <%= f.number_field :number3 %>
         <%= f.label :重量 %>
-        <%= f.text_field :weight3 %>
+        <%= f.text_field :weight3 ,:class=>"freight" %>
         <%= f.label :体积 %>
-        <%= f.text_field :volume3 %>
+        <%= f.text_field :volume3  ,:class=>"freight"%>
       </div>
     </div>
     <hr>
-
     <div class="field">
       <%= f.label :托运人 %>
-      <%= f.number_field :consignor_id %>
-      <%= f.label :收货人 %>
-      <%= f.number_field :consignee_id %>
+      <%= f.select :consignor_id,@consignors.collect{
+                     |c| [c.name,c.id]
+                                } %>
+      <%= f.label :收货人%>
+      <%= f.select :consignee_id,@consignees.collect{
+                     |c| [c.name,c.id,html_options={data:{WeightPrice:c.weight,volumePrice:c.volume}}]
+                                } , { include_blank: true }%>
       <%= f.label :运费 %>
-      <%= f.number_field :freightCost %>
+      <%= f.number_field :freightCost ,:class=>'Cost'%>
     </div>
     <hr>
     <a class="btn btn-primary" role="button" data-toggle="collapse" href="#moreCost" aria-expanded="false" aria-controls="moreCost">
@@ -71,15 +85,13 @@
       保险
     </a>
     <br>
-    <hr>
-
-
+    <br>
     <div class="collapse" id="Transfer">
-      <div class="field">
+      <div class="field" >
         <%= f.label :是否中转 %>
         <%= f.check_box :isTransfer %>
         <%= f.label :中转费用 %>
-        <%= f.number_field :transferCost %>
+        <%= f.number_field :transferCost ,:class=>'Cost'%>
         <%= f.label :中转地 %>
         <%= f.text_field :transferDestintion %>
       </div>
@@ -87,39 +99,25 @@
     <div class="collapse" id="moreCost">
       <div class="field">
         <%= f.label :提货费 %>
-        <%= f.number_field :deliverCost %>
+        <%= f.number_field :deliverCost,:class=>'Cost' %>
         <%= f.label :送货费 %>
-        <%= f.number_field :acceptCost %>
+        <%= f.number_field :acceptCost,:class=>'Cost' %>
         <%= f.label :打包费 %>
-        <%= f.number_field :packingCost %>
+        <%= f.number_field :packingCost,:class=>'Cost' %>
       </div>
       <div class="field">
         <%= f.label :其他费用 %>
-        <%= f.number_field :otherCost %>
+        <%= f.number_field :otherCost ,:class=>'Cost'%>
       </div>
     </div>
-
     <div class="collapse" id="insurance">
       <div class="field">
       <%= f.label :声明价值 %>
       <%= f.number_field :ThatValue %>
       <%= f.label :保险费 %>
-      <%= f.number_field :insuranceCost %>
+      <%= f.number_field :insuranceCost,:class=>'Cost' %>
       </div>
     </div>
-
-
-
-  <div class="field">
-    <%= f.label :路线 %>
-    <%= f.select  :line_id ,@lines.collect{
-        |l| [l.place+'--'+l.destination,l.id]
-    } %>
-    <%= f.label :跟随车辆 %>
-    <%= f.select :truck_id ,@departs.collect{
-        |d| [Truck.find(d.truck_id).licensePlateNumber,d.id]
-    } %>
-  </div>
     <hr>
     <div class="field">
       <%= f.label :付款方式 %>
@@ -134,3 +132,49 @@
     <%= f.submit :value=>'保存',:class=>'btn btn-danger' %>
   </div>
 <% end %>
+
+<script>
+$(function(){
+    $("#waybillorder_consignee_id").change(countFreight);
+    $(".freight").change(countFreight);
+    $(".Cost").change(Cost);
+    function countFreight (){
+        var waybillorder_weight1 = getNum($("#waybillorder_weight1").val());
+        var waybillorder_volume1 = getNum($("#waybillorder_volume1").val());
+        var waybillorder_weight2 = getNum($("#waybillorder_weight2").val());
+        var waybillorder_volume2 = getNum($("#waybillorder_volume2").val());
+        var waybillorder_weight3 = getNum( $("#waybillorder_weight3").val());
+        var waybillorder_volume3 = getNum($("#waybillorder_volume3").val());
+        var weight = $("#waybillorder_consignee_id").find("option:selected").attr("data-weightprice");
+        var volume = $("#waybillorder_consignee_id").find("option:selected").attr("data-volumeprice");
+        var cost1= Math.floor((waybillorder_weight1+waybillorder_weight2+waybillorder_weight3) * weight);
+        console.log((waybillorder_volume1+waybillorder_volume2+waybillorder_volume3));
+        var cost2= Math.floor((waybillorder_volume1+waybillorder_volume2+waybillorder_volume3) * volume);
+        if(cost1>cost2)
+        {
+            $("#waybillorder_freightCost").val(cost1);
+        }
+        else
+        {
+            $("#waybillorder_freightCost").val(cost2);
+        }
+
+        $(".Cost").change();
+    }
+
+    function Cost()
+    {
+        var count = 0;
+          $(".Cost").each(function(i,x){
+             count+=parseInt(getNum($(x).val()));
+              console.log(count);
+          })
+        $("#waybillorder_total").val(count);
+    }
+    function getNum(str)
+    {
+        return str==""?0:parseFloat(str);
+    }
+
+})
+</script>

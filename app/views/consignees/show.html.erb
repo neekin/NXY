@@ -15,5 +15,20 @@
   <%= @consignee.company_id %>
 </p>
 
+<p>
+  <strong>Weight:</strong>
+  <%= @consignee.weight %>
+</p>
+
+<p>
+  <strong>Volume:</strong>
+  <%= @consignee.volume %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @consignee.address %>
+</p>
+
 <%= link_to 'Edit', edit_consignee_path(@consignee) %> |
 <%= link_to 'Back', consignees_path %>

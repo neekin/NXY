@@ -1,0 +1,56 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+<div id="printarea">
+
+  <div class="date"><span class="noprint ">发货日期:</span>
+    <%= @waybillorder.created_at.localtime.strftime("%Y-%m-%d") %>
+  </div>
+
+  <div class="place"><span class="noprint ">发站:</span>   <%= Line.find(@waybillorder.line_id).place %></div>
+  <div class="destination"><span class="noprint">到站:</span>   <%= Line.find(@waybillorder.line_id).destination %></div>
+  <div class="transferDestintion"><span class="noprint">中转</span> <%= @waybillorder.transferDestintion %></div>
+  <div class="ordernum" ><span class="noprint"> 货运单号:</span>  <%= @waybillorder.orderNum %></div>
+
+  <div class="consignor"><span class="noprint">托运人:</span> <%= Consignor.find(@waybillorder.consignor_id).name %></div>
+  <div class="consignee"><span class="noprint">收货人:</span> <%= Consignee.find(@waybillorder.consignee_id).name %></div>
+  <div class="consignor_phone"><span class="noprint">电话:</span> <%= Consignor.find(@waybillorder.consignor_id).phone %></div>
+  <div class="consignee_phone"><span class="noprint">电话:</span> <%= Consignee.find(@waybillorder.consignee_id).phone %></div>
+  <div class="address"><span class="noprint">地址:</span> <%= Consignee.find(@waybillorder.consignee_id).address %></div>
+
+  <div class="goodname1" ><span class="noprint">货物名称:</span>  <%= @waybillorder.googsName1 %></div>
+  <div class="number1"><span class="noprint">件数:</span>      <%= @waybillorder.number1 %></div>
+  <div class="weight1"><span class="noprint">体积:</span>    <%= @waybillorder.weight1 %></div>
+  <div class="volume1"><span class="noprint">重量:</span>  <%= @waybillorder.volume1 %></div>
+
+  <% if @waybillorder.googdName2? %>
+      <div class="googdName2"><span class="noprint">货物名称:</span> <%= @waybillorder.googdName2 %></div>
+      <div class="number2"><span class="noprint">件数:</span>      <%= @waybillorder.number2 %></div>
+      <div class="weight2"><span class="noprint">体积:</span>    <%= @waybillorder.weight2 %></div>
+      <div class="volume2"><span class="noprint">重量:</span>  <%= @waybillorder.volume2 %></div>
+  <% end %>
+  <% if @waybillorder.goodsName3? %>
+
+      <div class="goodsName3"><span class="noprint">货物名称: <%= @waybillorder.goodsName3 %></span></div>
+      <div class="number3"><span class="noprint">件数:</span>      <%= @waybillorder.number3 %></div>
+      <div class="weight3"><span class="noprint">体积:</span>    <%= @waybillorder.weight3 %></div>
+      <div class="weight3"><span class="noprint">重量:</span>  <%= @waybillorder.volume3 %></div>
+
+  <% end %>
+    <div class="freightCost"><span class="noprint">运费:</span><%= @waybillorder.freightCost %></div>
+    <div class="packingCost"><span class="noprint">打包费:</span> <%= @waybillorder.packingCost %></div>
+    <div class="deliverCost"><span class="noprint">送货费:</span> <%= @waybillorder.deliverCost %></div>
+    <div class="acceptCost"><span class="noprint">提货费:</span> <%= @waybillorder.acceptCost %></div>
+    <!--<div class="noprint isTransfer"><span class="noprint">是否中转:</span><%= if @waybillorder.isTransfer then '是' else '否' end %></div>-->
+    <div class="transferCost"><span class="noprint">中转费:</span><%= @waybillorder.transferCost %></div>
+    <div class="otherCost"><span class="noprint">其他收费:</span> <%= @waybillorder.otherCost %></div>
+    <div class="proxycollection"><span class="noprint">代收款:</span>  <%= @waybillorder.proxycollection %></div>
+    <div class="paymentmenthod"><span class="noprint">付款方式:</span>  <%= Paymentmethod.find(@waybillorder.paymentmenthod_id).name %></div>
+    <div class="ThatValue"><span class="noprint">声明价值:</span><%= @waybillorder.ThatValue %></div>
+    <div class="insuranceCost"><span class="noprint">保险费:</span> <%= @waybillorder.insuranceCost %></div>
+    <div class="total"><span class="noprint">总计:</span> <%= @waybillorder.total %></div>
+    <div class="loginname"><span class="noprint">开票人:</span> <%= User.find(@waybillorder.user_id).loginname %></div>
+
+</div>
+
+</div>
+<a class="noprint" onclick="print()"> 打印</a>

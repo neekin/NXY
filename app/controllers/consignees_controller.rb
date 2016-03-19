@@ -15,6 +15,7 @@ class ConsigneesController < ApplicationController
   # GET /consignees/new
   def new
     @consignee = Consignee.new
+    @lines = Line.where(:company_id => current_user.company_id).all
   end
 
   # GET /consignees/1/edit
@@ -25,7 +26,7 @@ class ConsigneesController < ApplicationController
   # POST /consignees.json
   def create
     @consignee = Consignee.new(consignee_params)
-
+    @consignee.company_id = current_user.company_id
     respond_to do |format|
       if @consignee.save
         format.html { redirect_to @consignee, notice: 'Consignee was successfully created.' }
@@ -69,6 +70,6 @@ class ConsigneesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def consignee_params
-      params.require(:consignee).permit(:name, :phone, :company_id)
+      params.require(:consignee).permit(:name, :phone, :company_id, :weight, :volume, :address,:line_id)
     end
 end

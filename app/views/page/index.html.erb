@@ -18,7 +18,7 @@
             <div class="panel-body">
             </div>
             <div class="panel-footer">
-              <%= link_to '开单',new_waybillorder_path %>
+              <%= link_to '开单',new_waybillorder_path(:line_id=>line.id)%>
             </div>
           </div>
           <% end %>
@@ -32,7 +32,7 @@
                 <div class="panel-body">
                 </div>
                 <div class="panel-footer">
-                  入库 发车
+                  <%= link_to '入库',new_depart_path%>
                 </div>
               </div>
           <% end %>

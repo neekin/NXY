@@ -19,10 +19,12 @@
     <%= f.label :phone %><br>
     <%= f.text_field :phone %>
   </div>
-  <div class="field">
-    <%= f.label :company_id %><br>
-    <%= f.number_field :company_id %>
-  </div>
+    <div class="field">
+      <%= f.label :目的地 %><br>
+      <%= f.select  :line_id ,@lines.collect{
+                                     |l| [l.destination,l.id]
+                             } %>
+    </div>
   <div class="actions">
     <%= f.submit %>
   </div>

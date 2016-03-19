@@ -12,26 +12,43 @@ class WaybillordersController < ApplicationController
   def show
   end
 
+  def print
+    @waybillorder = Waybillorder.find(params[:id])
+  end
+
   # GET /waybillorders/new
   def new
     @waybillorder = Waybillorder.new
-    @lines = Line.where(:company_id => current_user.company_id).all
-    @departs = Depart.where("line_id = ?",@lines.first.id)
+     if params[:line_id]
+      @lines = Line.where(:company_id => current_user.company_id,:id=>params[:line_id]).all
+      @consignees = Consignee.where(:company_id => current_user.company_id,:id=>params[:line_id]).all
+      @consignors = Consignor.where(:company_id => current_user.company_id,:id=>params[:line_id]).all
+     else
+      @lines = Line.where(:company_id => current_user.company_id).all
+      @consignees = Consignee.where(:company_id => current_user.company_id).all
+      @consignors = Consignor.where(:company_id => current_user.company_id).all
+     end
+    @departs = Depart.where(:line_id=> @lines.first.id,:status => false)
   end
 
   # GET /waybillorders/1/edit
   def edit
     @lines = Line.where(:company_id => current_user.company_id).all
     @departs = Depart.where("line_id = ?",@lines.first.id)
+    @consignees = Consignee.where(:company_id => current_user.company_id).all
+    @consignors = Consignor.where(:company_id => current_user.company_id).all
   end
 
   # POST /waybillorders
   # POST /waybillorders.json
   def create
     @waybillorder = Waybillorder.new(waybillorder_params)
-
+    @waybillorder.user_id = current_user.id
+    @waybillorder.company_id = current_user.company_id
     respond_to do |format|
       if @waybillorder.save
+         @waybillorder.orderNum = Line.find(waybillorder_params[:line_id]).prefix + if @waybillorder.id < 99 then ("%03d" % @waybillorder.id) else @waybillorder.id.to_s end +"-"+ @waybillorder.number1.to_s
+         @waybillorder.save
         format.html { redirect_to @waybillorder, notice: 'Waybillorder was successfully created.' }
         format.json { render :show, status: :created, location: @waybillorder }
       else
@@ -41,11 +58,22 @@ class WaybillordersController < ApplicationController
     end
   end
 
+  def CreateOrderNum
+    @waybillorder.id + "-" +@waybillorder.number1
+  end
+
   # PATCH/PUT /waybillorders/1
   # PATCH/PUT /waybillorders/1.json
   def update
     respond_to do |format|
       if @waybillorder.update(waybillorder_params)
+        update_attribute={:orderNum=>Line.find(waybillorder_params[:line_id]).prefix +
+            if @waybillorder.id < 99 then ("%03d" % @waybillorder.id)
+            elsif @waybillorder.id >999
+            then @waybillorder.id.to_s[-3,3]
+            else @waybillorder.id.to_s
+            end +"-"+ @waybillorder.number1.to_s}
+        @waybillorder.update(update_attribute)
         format.html { redirect_to @waybillorder, notice: 'Waybillorder was successfully updated.' }
         format.json { render :show, status: :ok, location: @waybillorder }
       else

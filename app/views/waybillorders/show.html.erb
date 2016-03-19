@@ -13,9 +13,9 @@
     <td>  <strong>发往:</strong> </td>
     <td>   <%= Line.find(@waybillorder.line_id).destination %></td>
     <td> <strong>发货人:</strong></td>
-    <td>  <%= @waybillorder.consignor_id %></td>
+    <td>  <%= Consignor.find(@waybillorder.consignor_id).name %></td>
     <td>  <strong>收货人:</strong></td>
-    <td> <%= @waybillorder.consignee_id %></td>
+    <td> <%= Consignee.find(@waybillorder.consignee_id).name %></td>
   </tr>
   <tr>
     <td>  <strong>货物名称:</strong></td>
@@ -64,7 +64,7 @@
   <tr>
 
     <td> <strong>是否中转:</strong></td>
-    <td> <%= @waybillorder.isTransfer %></td>
+    <td> <%= if @waybillorder.isTransfer then '是' else '否' end %></td>
     <td>  <strong>中转费:</strong></td>
     <td> <%= @waybillorder.transferCost %></td>
     <td> <strong>中转目的地:</strong></td>
@@ -77,7 +77,7 @@
     <td>  <strong>代收款:</strong></td>
     <td>  <%= @waybillorder.proxycollection %></td>
     <td>  <strong>付款方式:</strong></td>
-    <td colspan="3">   <%= @waybillorder.paymentmenthod_id %></td>
+    <td colspan="3">   <%= Paymentmethod.find(@waybillorder.paymentmenthod_id).name %></td>
   </tr>
   <tr>
     <td><strong>声明价值</strong></td>
@@ -87,7 +87,7 @@
     <td> <strong>总计:</strong></td>
     <td>  <%= @waybillorder.total %></td>
     <td>  <strong>开票人:</strong></td>
-    <td>  <%= @waybillorder.user_id %></td>
+    <td>  <%=User.find( @waybillorder.user_id).loginname %></td>
   </tr>
   </tbody>
 

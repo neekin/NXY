@@ -1,6 +1,10 @@
 
 
-
+<style>
+  td{
+      text-align: center;
+  }
+</style>
 <div class="container">
   <p id="notice"><%= notice %></p>
 
@@ -10,10 +14,7 @@
     <tr>
       <th>运单号</th>
       <th>运费</th>
-      <th>保险费</th>
-      <th>打包费</th>
-      <th>送货费</th>
-      <th>提货费</th>
+
       <th>是否中转</th>
       <th>中转费</th>
       <th>中转地</th>
@@ -24,7 +25,7 @@
       <th>代收货款</th>
       <th>所跟车辆</th>
       <th>付款方式</th>
-      <th colspan="3"></th>
+      <th colspan="5"></th>
     </tr>
     </thead>
 
@@ -33,20 +34,18 @@
         <tr>
           <td><%= waybillorder.orderNum %></td>
           <td><%= waybillorder.freightCost %></td>
-          <td><%= waybillorder.insuranceCost %></td>
-          <td><%= waybillorder.packingCost %></td>
-          <td><%= waybillorder.deliverCost %></td>
-          <td><%= waybillorder.acceptCost %></td>
-          <td><%= waybillorder.isTransfer == true ?"中转":"" %></td>
+
+          <td><%= if  waybillorder.isTransfer then  "是" else "否"  end%></td>
           <td><%= waybillorder.transferCost %></td>
           <td><%= waybillorder.transferDestintion %></td>
           <td><%= waybillorder.otherCost %></td>
           <td><%= waybillorder.total %></td>
-          <td><%= waybillorder.consignor_id %></td>
-          <td><%= waybillorder.consignee_id %></td>
+          <td><%= Consignor.find(waybillorder.consignor_id).name %></td>
+          <td><%= Consignee.find( waybillorder.consignee_id).name %></td>
           <td><%= waybillorder.proxycollection %></td>
-          <td><%= waybillorder.truck_id %></td>
-          <td><%= waybillorder.paymentmenthod_id %></td>
+          <td><%= Truck.find(waybillorder.truck_id).licensePlateNumber %></td>
+          <td><%= Paymentmethod.find(waybillorder.paymentmenthod_id).name %></td>
+          <td><%= link_to '打印', print_path(waybillorder) %></td>
           <td><%= link_to '装车', waybillorder %></td>
           <td><%= link_to '查看', waybillorder %></td>
           <td><%= link_to '编辑', edit_waybillorder_path(waybillorder) %></td>

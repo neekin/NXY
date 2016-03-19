@@ -1,9 +1,12 @@
 class CreateConsignees < ActiveRecord::Migration
   def change
     create_table :consignees do |t|
-      t.string :name  #收货人名字
-      t.string :phone  #联系方式
-      t.integer :company_id  #公司信息
+      t.string :name
+      t.string :phone
+      t.integer :company_id
+      t.float :weight
+      t.float :volume
+      t.string :address
 
       t.timestamps null: false
     end

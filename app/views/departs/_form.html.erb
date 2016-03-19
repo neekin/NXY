@@ -15,6 +15,7 @@
     <%= f.label '入库时间' %><br>
     <%= f.date_select :departureTime %>
   </div>
+
   <div class="field">
     <%= f.label '线路' %><br>
     <%= f.select :line_id, Line.where(:company_id=>current_user.company_id).all.collect{ |l| [l.place+'---'+l.destination,l.id] } %>
@@ -23,6 +24,10 @@
     <%= f.label :车辆 %><br>
     <%= f.select :truck_id, Truck.where(:company_id=>current_user.company_id).all.collect{ |t| [t.driver+'---'+t.licensePlateNumber,t.id] } %>
   </div>
+    <div class="field">
+      <%= f.label '是否发车' %><br>
+      <%= f.check_box :status %>
+    </div>
   <div class="actions">
     <%= f.submit %>
   </div>

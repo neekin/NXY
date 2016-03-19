@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :consignees
   resources :departs
   resources :trucks
   get 'waybillorders/update_departs' => 'waybillorders#update_departs' ,:as=>'update_departs',:defaults => { :format => 'js' }
+  get 'waybillorders/print/:id'=>'waybillorders#print' ,:as=>'print'
   resources :waybillorders
   resources :lines
   resources :users
@@ -16,7 +18,6 @@ Rails.application.routes.draw do
   post "create_login_session" => "users#create_login_session"
   post "/lines/new" => "lines#create"
   resources :paymentmethods
-  resources :consignees
   resources :consignors
   resources :companies
   # The priority is based upon order of creation: first created -> highest priority.

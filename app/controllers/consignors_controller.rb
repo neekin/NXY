@@ -15,6 +15,7 @@ class ConsignorsController < ApplicationController
   # GET /consignors/new
   def new
     @consignor = Consignor.new
+    @lines = Line.where(:company_id => current_user.company_id).all
   end
 
   # GET /consignors/1/edit
@@ -25,7 +26,7 @@ class ConsignorsController < ApplicationController
   # POST /consignors.json
   def create
     @consignor = Consignor.new(consignor_params)
-
+    @consignor.company_id = current_user.company_id
     respond_to do |format|
       if @consignor.save
         format.html { redirect_to @consignor, notice: 'Consignor was successfully created.' }
@@ -69,6 +70,6 @@ class ConsignorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def consignor_params
-      params.require(:consignor).permit(:name, :phone, :company_id)
+      params.require(:consignor).permit(:name, :phone, :company_id,:line_id)
     end
 end

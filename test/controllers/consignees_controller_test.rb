@@ -18,7 +18,7 @@ class ConsigneesControllerTest < ActionController::TestCase
 
   test "should create consignee" do
     assert_difference('Consignee.count') do
-      post :create, consignee: { company_id: @consignee.company_id, name: @consignee.name, phone: @consignee.phone }
+      post :create, consignee: { address: @consignee.address, company_id: @consignee.company_id, name: @consignee.name, phone: @consignee.phone, volume: @consignee.volume, weight: @consignee.weight }
     end
 
     assert_redirected_to consignee_path(assigns(:consignee))
@@ -35,7 +35,7 @@ class ConsigneesControllerTest < ActionController::TestCase
   end
 
   test "should update consignee" do
-    patch :update, id: @consignee, consignee: { company_id: @consignee.company_id, name: @consignee.name, phone: @consignee.phone }
+    patch :update, id: @consignee, consignee: { address: @consignee.address, company_id: @consignee.company_id, name: @consignee.name, phone: @consignee.phone, volume: @consignee.volume, weight: @consignee.weight }
     assert_redirected_to consignee_path(assigns(:consignee))
   end
 

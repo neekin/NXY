@@ -19,11 +19,11 @@
       <tr>
         <td><%= depart.departureTime %></td>
         <td><%= depart.line_id %></td>
-        <td><%= link_to '发车', depart %></td>
+        <td><%= depart.status %></td>
         <td><%= depart.truck_id %></td>
-        <td><%= link_to 'Show', depart %></td>
-        <td><%= link_to 'Edit', edit_depart_path(depart) %></td>
-        <td><%= link_to 'Destroy', depart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '查看', depart %></td>
+        <td><%= link_to '编辑', edit_depart_path(depart) %></td>
+        <td><%= link_to '删除', depart, method: :delete, data: { confirm: '确认删除吗?' } %></td>
       </tr>
     <% end %>
   </tbody>

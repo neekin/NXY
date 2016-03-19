@@ -2,10 +2,16 @@
 
 one:
   name: MyString
-  phone: 
+  phone: MyString
   company_id: 1
+  weight: 1.5
+  volume: 1.5
+  address: MyString
 
 two:
   name: MyString
-  phone: 
+  phone: MyString
   company_id: 1
+  weight: 1.5
+  volume: 1.5
+  address: MyString
