@@ -19,21 +19,21 @@
 
   <div class="goodname1" ><span class="noprint">货物名称:</span>  <%= @waybillorder.googsName1 %></div>
   <div class="number1"><span class="noprint">件数:</span>      <%= @waybillorder.number1 %></div>
-  <div class="weight1"><span class="noprint">体积:</span>    <%= @waybillorder.weight1 %></div>
-  <div class="volume1"><span class="noprint">重量:</span>  <%= @waybillorder.volume1 %></div>
+  <div class="weight1"><span class="noprint">重量:</span>    <%= @waybillorder.weight1 %></div>
+  <div class="volume1"><span class="noprint">体积:</span>  <%= @waybillorder.volume1 %></div>
 
   <% if @waybillorder.googdName2? %>
       <div class="googdName2"><span class="noprint">货物名称:</span> <%= @waybillorder.googdName2 %></div>
       <div class="number2"><span class="noprint">件数:</span>      <%= @waybillorder.number2 %></div>
-      <div class="weight2"><span class="noprint">体积:</span>    <%= @waybillorder.weight2 %></div>
-      <div class="volume2"><span class="noprint">重量:</span>  <%= @waybillorder.volume2 %></div>
+      <div class="weight2"><span class="noprint">重量:</span>    <%= @waybillorder.weight2 %></div>
+      <div class="volume2"><span class="noprint">体积:</span>  <%= @waybillorder.volume2 %></div>
   <% end %>
   <% if @waybillorder.goodsName3? %>
 
-      <div class="goodsName3"><span class="noprint">货物名称: <%= @waybillorder.goodsName3 %></span></div>
+      <div class="goodsName3"><span class="noprint">货物名称:</span> <%= @waybillorder.goodsName3 %></div>
       <div class="number3"><span class="noprint">件数:</span>      <%= @waybillorder.number3 %></div>
-      <div class="weight3"><span class="noprint">体积:</span>    <%= @waybillorder.weight3 %></div>
-      <div class="weight3"><span class="noprint">重量:</span>  <%= @waybillorder.volume3 %></div>
+      <div class="weight3"><span class="noprint">重量:</span>    <%= @waybillorder.weight3 %></div>
+      <div class="volume3"><span class="noprint">体积:</span>  <%= @waybillorder.volume3 %></div>
 
   <% end %>
     <div class="freightCost"><span class="noprint">运费:</span><%= @waybillorder.freightCost %></div>

@@ -52,164 +52,165 @@ label {
 .waybillorders-print {
   #printarea {
     position: relative;
+
     .date {
-      left: 90px;
-      top: -30px;
+      left: 120px;
+      top: -26px;
     }
     .place {
 
-      left: 240px;
-      top: -30px;
+      left: 270px;
+      top: -26px;
 
     }
     .destination {
 
-      left: 370px;
-      top: -30px;
+      left: 380px;
+      top: -26px;
     }
     .transferDestintion {
 
-      left: 470px;
-      top: -30px;
+      left: 500px;
+      top: -26px;
     }
     .ordernum {
 
-      left: 600px;
-      top: -30px;
+      left: 640px;
+      top: -26px;
     }
     .consignor {
 
-      left: 0;
-      top: 40px;
+      left: 120px;
+      top: 10px;
     }
     .consignee {
 
-      left: 160px;
-      top: 40px;
+      left: 500px;
+      top: 10px;
     }
     .consignor_phone {
 
-      left: 0;
-      top: 60px;
+      left: 120px;
+      top: 36px;
     }
     .consignee_phone {
 
-      left: 160px;
-      top: 60px;
+      left: 500px;
+      top: 36px;
     }
     .address {
 
-      left: 160px;
-      top: 80px;
+      left: 500px;
+      top: 56px;
     }
     .goodname1 {
 
-      left: 0;
-      top: 100px;
+      left: 80px;
+      top: 120px;
     }
     .number1 {
 
-      left: 100px;
-      top:100px;
+      left: 170px;
+      top:120px;
     }
     .weight1 {
 
-      left: 180px;
-      top: 100px;
+      left: 280px;
+      top: 120px;
     }
     .volume1 {
 
-      left:260px;
-      top: 100px;
+      left:360px;
+      top: 120px;
     }
     .googdName2 {
 
-      left: 0;
-      top: 100px;
+      left: 80px;
+      top: 146px;
     }
     .number2 {
 
-      left: 40px;
-      top: 100px;
+      left: 170px;
+      top: 146px;
     }
     .weight2 {
 
-      left: 60px;
-      top: 100px;
+      left: 280px;
+      top: 146px;
     }
     .volume2 {
 
-      left: 80px;
-      top: 100px;
+      left: 360px;
+      top: 146px;
     }
     .goodsName3 {
 
-      left: 0;
-      top: 120px;
+      left: 80px;
+      top: 170px;
     }
     .number3 {
 
-      left: 40px;
-      top: 120px;
+      left: 170px;
+      top: 170px;
     }
     .weight3 {
 
-      left: 60px;
-      top: 120px;
+      left: 280px;
+      top: 170px;
     }
     .volume3 {
 
-      left: 80px;
-      top: 120px;
+      left: 360px;
+      top: 170px;
     }
     .freightCost {
 
-      right: 0;
-      top: 0;
+      left:480px ;
+      top: 92px;
     }
     .packingCost {
       right: 0;
-      top: 30px;
+      top: 120px;
     }
     .deliverCost {
       right: 0;
-      top: 40px;
+      top: 92px;
     }
     .acceptCost {
-      top: 50px;
-      right: 0;
+      top: 92px;
+      left: 600px;
     }
     .transferCost {
-      top: 60px;
-      right: 0;
+      top: 150px;
+      left: 480px;
     }
     .ThatValue {
-      top: 70px;
-      right: 0;
+      top: 120px;
+      left: 480px;
     }
     .insuranceCost {
-      top: 80px;
-      right: 0;
+      top: 120px;
+      left: 600px;
     }
     .otherCost {
-      top: 90px;
-      right: 0;
+      top: 174px;
+      left: 480px;
     }
     .proxycollection {
-      right: 0;
-      top: 100px;
+      left: 530px;
+      top: 210px;
     }
     .paymentmenthod {
-      top: 110px;
-      right: 0;
+      top: 210px;
+      left: 290px;
     }
     .total {
-      top: 120px;
-      right: 0;
+      top: 236px;
+      left: 280px;
     }
     .loginname {
-      top: 130px;
-      right: 0;
+      top: 290px;
+      left:80px ;
     }
 
 
