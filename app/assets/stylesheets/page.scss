@@ -37,6 +37,13 @@ label {
   font-size: 18px;
 }
 
+.aprint{
+  position: relative;
+  top:400px;
+  text-align: center;
+
+}
+
 @media print {
   .collapse.navbar-collapse {
     display: none;

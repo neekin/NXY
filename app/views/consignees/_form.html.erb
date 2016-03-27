@@ -25,9 +25,7 @@
   </div>
     <div class="field">
       <%= f.label :目的地 %><br>
-    <%= f.select  :line_id ,@lines.collect{
-                                   |l| [l.destination,l.id]
-                           } %>
+    <%= f.select  :line_id ,@lines.collect{|l| [l.destination,l.id]} %>
     </div>
     <div class="field">
       <%= f.label :每公斤收费 %><br>
@@ -38,6 +36,6 @@
       <%= f.text_field :volume %>
     </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :value => '保存'%>
   </div>
 <% end %>

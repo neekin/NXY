@@ -4,7 +4,7 @@ class WaybillordersController < ApplicationController
   # GET /waybillorders
   # GET /waybillorders.json
   def index
-    @waybillorders = Waybillorder.all
+    @waybillorders = Waybillorder.where(:company_id => current_user.company_id).all
   end
 
   # GET /waybillorders/1
@@ -21,8 +21,8 @@ class WaybillordersController < ApplicationController
     @waybillorder = Waybillorder.new
      if params[:line_id]
       @lines = Line.where(:company_id => current_user.company_id,:id=>params[:line_id]).all
-      @consignees = Consignee.where(:company_id => current_user.company_id).all
-      @consignors = Consignor.where(:company_id => current_user.company_id).all
+      @consignees = Consignee.where(:company_id => current_user.company_id,:line_id=>params[:line_id]).all
+      @consignors = Consignor.where(:company_id => current_user.company_id,:line_id=>params[:line_id]).all
      else
       @lines = Line.where(:company_id => current_user.company_id).all
       @consignees = Consignee.where(:company_id => current_user.company_id).all

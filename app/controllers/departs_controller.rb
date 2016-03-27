@@ -4,7 +4,7 @@ class DepartsController < ApplicationController
   # GET /departs
   # GET /departs.json
   def index
-    @departs = Depart.all
+    @departs = Depart.where(:company_id => current_user.company_id).all
   end
 
   # GET /departs/1

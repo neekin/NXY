@@ -23,7 +23,7 @@
       <%= f.label :跟随车辆 %>
       <%= f.select :truck_id ,@departs.collect{
                                      |d| [Truck.find(d.truck_id).licensePlateNumber,d.id]
-                             } %>
+                             } , { include_blank: "请选择" }%>
     </div>
     <hr>
   <div class="field">
@@ -66,13 +66,19 @@
       <%= f.label :托运人 %>
       <%= f.select :consignor_id,@consignors.collect{
                      |c| [c.name,c.id]
-                                } %>
+                                }, { include_blank: "请选择" } %>
       <%= f.label :收货人%>
       <%= f.select :consignee_id,@consignees.collect{
                      |c| [c.name,c.id,html_options={data:{WeightPrice:c.weight,volumePrice:c.volume}}]
-                                } , { include_blank: true }%>
+                                } , { include_blank: "请选择" }%>
       <%= f.label :运费 %>
       <%= f.number_field :freightCost ,:class=>'Cost'%>
+      <br>
+
+      <a href="">新增托运人</a>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;
+      <a href="">新增收货人</a>
     </div>
     <hr>
     <a class="btn btn-primary" role="button" data-toggle="collapse" href="#moreCost" aria-expanded="false" aria-controls="moreCost">

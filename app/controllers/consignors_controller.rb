@@ -4,7 +4,7 @@ class ConsignorsController < ApplicationController
   # GET /consignors
   # GET /consignors.json
   def index
-    @consignors = Consignor.all
+    @consignors = Consignor.where(:company_id => current_user.company_id).all
   end
 
   # GET /consignors/1

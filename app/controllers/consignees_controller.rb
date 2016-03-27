@@ -4,7 +4,7 @@ class ConsigneesController < ApplicationController
   # GET /consignees
   # GET /consignees.json
   def index
-    @consignees = Consignee.all
+    @consignees = Consignee.where(:company_id => current_user.company_id).all
   end
 
   # GET /consignees/1
@@ -20,6 +20,7 @@ class ConsigneesController < ApplicationController
 
   # GET /consignees/1/edit
   def edit
+    @lines = Line.where(:company_id => current_user.company_id).all
   end
 
   # POST /consignees

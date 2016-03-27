@@ -4,7 +4,7 @@ class TrucksController < ApplicationController
   # GET /trucks
   # GET /trucks.json
   def index
-    @trucks = Truck.all
+    @trucks = Truck.where(:company_id => current_user.company_id).all
   end
 
   # GET /trucks/1

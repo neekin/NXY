@@ -1,16 +1,16 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Consignees</h1>
+<h1>收货人列表</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Phone</th>
-      <th>Company</th>
-      <th>Weight</th>
-      <th>Volume</th>
-      <th>Address</th>
+      <th>姓名</th>
+      <th>电话</th>
+      <th>每公斤运费</th>
+      <th>每立方运费</th>
+      <th>地址</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,13 +20,12 @@
       <tr>
         <td><%= consignee.name %></td>
         <td><%= consignee.phone %></td>
-        <td><%= consignee.company_id %></td>
         <td><%= consignee.weight %></td>
         <td><%= consignee.volume %></td>
         <td><%= consignee.address %></td>
-        <td><%= link_to 'Show', consignee %></td>
-        <td><%= link_to 'Edit', edit_consignee_path(consignee) %></td>
-        <td><%= link_to 'Destroy', consignee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '查看', consignee %></td>
+        <td><%= link_to '编辑', edit_consignee_path(consignee) %></td>
+        <td><%= link_to '删除', consignee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +33,5 @@
 
 <br>
 
-<%= link_to 'New Consignee', new_consignee_path %>
+<%= link_to '添加新收货人', new_consignee_path %>
+</div>
