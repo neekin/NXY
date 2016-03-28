@@ -1,4 +1,5 @@
-<%= form_for(@waybillorder) do |f| %>
+
+<%= form_for(@waybillorder,html: {class: "form-inline"})  do |f|  %>
   <% if @waybillorder.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@waybillorder.errors.count, "error") %> prohibited this waybillorder from being saved:</h2>
@@ -66,11 +67,11 @@
       <%= f.label :托运人 %>
       <%= f.select :consignor_id,@consignors.collect{
                      |c| [c.name,c.id]
-                                }, { include_blank: "请选择" } %>
+                                }, { include_blank: "请选择" },:class=>'combobox form-control' %>
       <%= f.label :收货人%>
       <%= f.select :consignee_id,@consignees.collect{
                      |c| [c.name,c.id,html_options={data:{WeightPrice:c.weight,volumePrice:c.volume}}]
-                                } , { include_blank: "请选择" }%>
+                                } , { include_blank: "请选择" },:class=>'combobox form-control'%>
       <%= f.label :运费 %>
       <%= f.number_field :freightCost ,:class=>'Cost'%>
       <br>
@@ -144,6 +145,7 @@ $(function(){
     $("#waybillorder_consignee_id").change(countFreight);
     $(".freight").change(countFreight);
     $(".Cost").change(Cost);
+    $('.combobox').combobox();
     function countFreight (){
         var waybillorder_weight1 = getNum($("#waybillorder_weight1").val());
         var waybillorder_volume1 = getNum($("#waybillorder_volume1").val());
