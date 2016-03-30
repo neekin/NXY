@@ -26,6 +26,7 @@ class ConsigneesController < ApplicationController
   # POST /consignees
   # POST /consignees.json
   def create
+    @lines = Line.where(:company_id => current_user.company_id).all
     @consignee = Consignee.new(consignee_params)
     @consignee.company_id = current_user.company_id
     respond_to do |format|

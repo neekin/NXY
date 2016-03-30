@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label '姓名' %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br>
+    <%= f.label '电话' %><br>
     <%= f.text_field :phone %>
   </div>
     <div class="field">
@@ -26,6 +26,6 @@
                              } %>
     </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :value=>'保存',:class=>'btn btn-primary'%>
   </div>
 <% end %>

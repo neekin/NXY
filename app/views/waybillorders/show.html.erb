@@ -11,11 +11,11 @@
     <td><strong>货运单号:</strong></td>
     <td>  <%= @waybillorder.orderNum %></td>
     <td>  <strong>发往:</strong> </td>
-    <td>   <%= Line.find(@waybillorder.line_id).destination %></td>
+    <td>   <%= @waybillorder.line.destination %></td>
     <td> <strong>发货人:</strong></td>
-    <td>  <%= Consignor.find(@waybillorder.consignor_id).name %></td>
+    <td>  <%= @waybillorder.consignor.name %></td>
     <td>  <strong>收货人:</strong></td>
-    <td> <%= Consignee.find(@waybillorder.consignee_id).name %></td>
+    <td> <%= @waybillorder.consignee.name %></td>
   </tr>
   <tr>
     <td>  <strong>货物名称:</strong></td>
@@ -77,7 +77,7 @@
     <td>  <strong>代收款:</strong></td>
     <td>  <%= @waybillorder.proxycollection %></td>
     <td>  <strong>付款方式:</strong></td>
-    <td colspan="3">   <%= Paymentmethod.find(@waybillorder.paymentmenthod_id).name %></td>
+    <td colspan="3">   <%= @waybillorder.paymentmenthod.name %></td>
   </tr>
   <tr>
     <td><strong>声明价值</strong></td>
@@ -87,7 +87,7 @@
     <td> <strong>总计:</strong></td>
     <td>  <%= @waybillorder.total %></td>
     <td>  <strong>开票人:</strong></td>
-    <td>  <%=User.find( @waybillorder.user_id).loginname %></td>
+    <td>  <%= @waybillorder.user.loginname %></td>
   </tr>
   </tbody>
 

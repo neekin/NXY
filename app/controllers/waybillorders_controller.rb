@@ -42,6 +42,10 @@ class WaybillordersController < ApplicationController
   # POST /waybillorders
   # POST /waybillorders.json
   def create
+    @lines = Line.where(:company_id => current_user.company_id).all
+     @departs = Depart.where(:line_id=> @lines.first.id,:status => false)
+      @consignees = Consignee.where(:company_id => current_user.company_id).all
+      @consignors = Consignor.where(:company_id => current_user.company_id).all
     @waybillorder = Waybillorder.new(waybillorder_params)
     @waybillorder.user_id = current_user.id
     @waybillorder.company_id = current_user.company_id

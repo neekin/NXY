@@ -40,11 +40,11 @@
           <td><%= waybillorder.transferDestintion %></td>
           <td><%= waybillorder.otherCost %></td>
           <td><%= waybillorder.total %></td>
-          <td><%= Consignor.find(waybillorder.consignor_id).name %></td>
-          <td><%= Consignee.find( waybillorder.consignee_id).name %></td>
+          <td><%= waybillorder.consignor.name %></td>
+          <td><%= waybillorder.consignee.name %></td>
           <td><%= waybillorder.proxycollection %></td>
-          <td><%= Truck.find(waybillorder.truck_id).licensePlateNumber %></td>
-          <td><%= Paymentmethod.find(waybillorder.paymentmenthod_id).name %></td>
+          <td><%= waybillorder.truck.licensePlateNumber %></td>
+          <td><%= waybillorder.paymentmenthod.name %></td>
           <td><%= link_to '打印', print_path(waybillorder) %></td>
           <td><%= link_to '装车', waybillorder %></td>
           <td><%= link_to '查看', waybillorder %></td>

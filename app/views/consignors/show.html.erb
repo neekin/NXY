@@ -1,3 +1,4 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -10,10 +11,6 @@
   <%= @consignor.phone %>
 </p>
 
-<p>
-  <strong>Company:</strong>
-  <%= @consignor.company_id %>
-</p>
-
-<%= link_to 'Edit', edit_consignor_path(@consignor) %> |
-<%= link_to 'Back', consignors_path %>
+<%= link_to '编辑', edit_consignor_path(@consignor) %> |
+<%= link_to '返回', consignors_path %>
+</div>

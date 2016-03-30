@@ -20,11 +20,13 @@ class ConsignorsController < ApplicationController
 
   # GET /consignors/1/edit
   def edit
+    @lines = Line.where(:company_id => current_user.company_id).all
   end
 
   # POST /consignors
   # POST /consignors.json
   def create
+    @lines = Line.where(:company_id => current_user.company_id).all
     @consignor = Consignor.new(consignor_params)
     @consignor.company_id = current_user.company_id
     respond_to do |format|
