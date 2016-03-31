@@ -21,19 +21,20 @@ class WaybillordersController < ApplicationController
     @waybillorder = Waybillorder.new
      if params[:line_id]
       @lines = Line.where(:company_id => current_user.company_id,:id=>params[:line_id]).all
-      @consignees = Consignee.where(:company_id => current_user.company_id,:line_id=>params[:line_id]).all
-      @consignors = Consignor.where(:company_id => current_user.company_id,:line_id=>params[:line_id]).all
+      @consignees = Consignee.where(:company_id => current_user.company_id,:line_id=>params[:line_id]).order(:created_at=>'desc').all
+      @consignors = Consignor.where(:company_id => current_user.company_id,:line_id=>params[:line_id]).order(:created_at=>'desc').all
      else
       @lines = Line.where(:company_id => current_user.company_id).all
-      @consignees = Consignee.where(:company_id => current_user.company_id).all
-      @consignors = Consignor.where(:company_id => current_user.company_id).all
+      @consignees = Consignee.where(:company_id => current_user.company_id).order(:created_at=>'desc').all
+      @consignors = Consignor.where(:company_id => current_user.company_id).order(:created_at=>'desc').all
      end
-    @departs = Depart.where(:line_id=> @lines.first.id,:status => false)
+    @departs = Depart.where(:line_id=> @lines.first.id,:status => false).order(:created_at=>'desc').all
     @paymentmethods = Paymentmethod.where(:company_id=>current_user.company_id).all
   end
 
   # GET /waybillorders/1/edit
   def edit
+
     @lines = Line.where(:company_id => current_user.company_id).all
     @departs = Depart.where("line_id = ?",@lines.first.id)
     @consignees = Consignee.where(:company_id => current_user.company_id).all

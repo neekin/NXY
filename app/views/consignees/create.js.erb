@@ -1,1 +1,17 @@
-alert("haha");
+<% if @consignee.errors.blank? %>
+// 用 Ajax 载入当前页面，找到下拉框的 Dom 的新 HTML，再替换目前页面的下拉框 Dom
+var selector = '#waybillorder_consignee_id';
+$.get(location.href, function(html) {
+    var doc = $(html).find(selector);
+    $(selector).replaceWith(doc);
+    var commbox = $("input[name='waybillorder[consignee_id]']").parent();
+    commbox.remove();
+    $(selector).combobox();
+});
+bootbox.hideAll();
+<% else %>
+var html = "<%= j(render('form', remote: true)) %>";
+// 保存失败，直接替换浮动窗口上面的 HTML 为新的 form render 结果
+// 因为 @address 包含验证错误信息，所以 render 出来的 HTML 也包含验证信息
+$('#new_consignee').replaceWith(html);
+<% end %>

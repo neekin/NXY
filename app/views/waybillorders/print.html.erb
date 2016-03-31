@@ -44,7 +44,7 @@
     <div class="transferCost"><span class="noprint">中转费:</span><%= @waybillorder.transferCost %></div>
     <div class="otherCost"><span class="noprint">其他收费:</span> <%= @waybillorder.otherCost %></div>
     <div class="proxycollection"><span class="noprint">代收款:</span>  <%= @waybillorder.proxycollection %></div>
-    <div class="paymentmenthod"><span class="noprint">付款方式:</span>  <%= Paymentmethod.find(@waybillorder.paymentmenthod_id).name %></div>
+    <div class="paymentmenthod"><span class="noprint">付款方式:</span>  <%= Paymentmethod.find(@waybillorder.paymentmethod_id).name %></div>
     <div class="ThatValue"><span class="noprint">声明价值:</span><%= @waybillorder.ThatValue %></div>
     <div class="insuranceCost"><span class="noprint">保险费:</span> <%= @waybillorder.insuranceCost %></div>
     <div class="total"><span class="noprint">总计:</span> <%= @waybillorder.total %></div>
