@@ -145,7 +145,8 @@
         <%= f.label :代收货款 %>
         <%= f.number_field :proxycollection,:class=>'form-control' %>
         <label class="checkbox-inline">
-        <input type="checkbox" id="inlineCheckbox1" value="option1"> 等通知发货
+          <%= f.check_box :waitnotice%>
+        等通知发货
         </label>
     </div>                                                  
 

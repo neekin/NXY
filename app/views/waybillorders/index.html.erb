@@ -23,7 +23,6 @@
       <th>托运人</th>
       <th>收货人</th>
       <th>代收货款</th>
-      <th>所跟车辆</th>
       <th>付款方式</th>
       <th colspan="5"></th>
     </tr>
@@ -43,7 +42,7 @@
           <td><%= waybillorder.consignor.name %></td>
           <td><%= waybillorder.consignee.name %></td>
           <td><%= waybillorder.proxycollection %></td>
-          <td><%= waybillorder.depart.truck.licensePlateNumber %></td>
+
           <td><%= waybillorder.paymentmethod.name %></td>
           <td><%= link_to '打印', print_path(waybillorder) %></td>
           <td><%= link_to '装车', waybillorder %></td>

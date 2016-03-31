@@ -38,6 +38,7 @@ class WaybillordersController < ApplicationController
     @departs = Depart.where("line_id = ?",@lines.first.id)
     @consignees = Consignee.where(:company_id => current_user.company_id).all
     @consignors = Consignor.where(:company_id => current_user.company_id).all
+    @paymentmethods = Paymentmethod.where(:company_id=>current_user.company_id).all
   end
 
   # POST /waybillorders
@@ -114,6 +115,6 @@ class WaybillordersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def waybillorder_params
-      params.require(:waybillorder).permit(:orderNum, :googsName1, :googdName2, :goodsName3, :number1, :number2, :number3, :weight1, :weight2, :weight3, :volume1, :volume2, :volume3, :freightCost, :insuranceCost, :packingCost, :deliverCost, :acceptCost, :isTransfer, :transferCost, :transferDestintion, :otherCost, :total, :consignor_id, :consignee_id, :proxycollection, :truck_id, :company_id, :user_id, :paymentmenthod_id, :line_id,:ThatValue)
+      params.require(:waybillorder).permit(:orderNum, :googsName1, :googdName2, :goodsName3, :number1, :number2, :number3, :weight1, :weight2, :weight3, :volume1, :volume2, :volume3, :freightCost, :insuranceCost, :packingCost, :deliverCost, :acceptCost, :isTransfer, :transferCost, :transferDestintion, :otherCost, :total, :consignor_id, :consignee_id, :proxycollection, :depart_id, :company_id, :user_id, :paymentmethod_id, :line_id,:ThatValue,:waitnotice)
     end
 end
