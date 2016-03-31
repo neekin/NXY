@@ -4,7 +4,7 @@ class WaybillordersController < ApplicationController
   # GET /waybillorders
   # GET /waybillorders.json
   def index
-    @waybillorders = Waybillorder.where(:company_id => current_user.company_id).all
+    @waybillorders = Waybillorder.includes(:consignee).includes(:consignor).where(:company_id => current_user.company_id).all
   end
 
   # GET /waybillorders/1
@@ -29,6 +29,7 @@ class WaybillordersController < ApplicationController
       @consignors = Consignor.where(:company_id => current_user.company_id).all
      end
     @departs = Depart.where(:line_id=> @lines.first.id,:status => false)
+    @paymentmethods = Paymentmethod.where(:company_id=>current_user.company_id).all
   end
 
   # GET /waybillorders/1/edit
@@ -98,7 +99,7 @@ class WaybillordersController < ApplicationController
   end
 
   def update_departs
-    @departs = Depart.where(:line_id =>params[:line_id])
+    @departs = Depart.includes(:truck).where(:line_id =>params[:line_id])
     respond_to do |format|
       format.js
     end

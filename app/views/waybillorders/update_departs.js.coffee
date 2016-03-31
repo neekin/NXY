@@ -1,1 +1,1 @@
-$("#waybillorder_truck_id").empty().append("<%= escape_javascript(render(:partial => @departs)) %>")
+$("#waybillorder_depart_id").empty().append("<%= escape_javascript(render(:partial => @departs)) %>")

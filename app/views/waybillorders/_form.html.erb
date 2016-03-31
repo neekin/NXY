@@ -22,7 +22,7 @@
                                      |l| [l.place+'---'+l.destination,l.id]
                              },{},:class=>'form-control'%>
       <%= f.label :跟随车辆 %>
-      <%= f.select :truck_id ,@departs.collect{
+      <%= f.select :depart_id ,@departs.collect{
                                      |d| [d.truck.licensePlateNumber,d.id]
                              } , { include_blank: "请选择" },:class=>'form-control'%>
     </div>
@@ -33,9 +33,9 @@
     <%= f.label :件数 %>
     <%= f.number_field :number1,:class=>"form-control" %>
     <%= f.label :重量 %>
-    <%= f.text_field :weight1 ,:class=>"freight",:class=>"form-control" %>
+    <%= f.text_field :weight1 ,:class=>" freight form-control" %>
     <%= f.label :体积 %>
-    <%= f.text_field :volume1  ,:class=>"freight",:class=>"form-control"%>
+    <%= f.text_field :volume1  ,:class=>" freight form-control"%>
   </div>
   <div>
     <a  class="btn btn-primary" role="button" data-toggle="collapse" href="#moregoods" aria-expanded="false" aria-controls="moregoods">
@@ -50,9 +50,9 @@
         <%= f.label :件数 %>
         <%= f.number_field :number2,:class=>"form-control" %>
         <%= f.label :重量 %>
-        <%= f.text_field :weight2  ,:class=>"freight form-control"%>
+        <%= f.text_field :weight2  ,:class=>'freight form-control' %>
         <%= f.label :体积 %>
-        <%= f.text_field :volume2 ,:class=>"freight form-control" %>
+        <%= f.text_field :volume2 ,:class=>'freight form-control' %>
       </div>
       <div class="form-group">
         <%= f.label :货物名称 %>
@@ -60,9 +60,9 @@
         <%= f.label :件数 %>
         <%= f.number_field :number3,:class=>"form-control" %>
         <%= f.label :重量 %>
-        <%= f.text_field :weight3 ,:class=>"freight form-control" %>
+        <%= f.text_field :weight3 ,:class=>'freight form-control ' %>
         <%= f.label :体积 %>
-        <%= f.text_field :volume3  ,:class=>"freight form-control"%>
+        <%= f.text_field :volume3  ,:class=>'freight form-control '%>
       </div>
     </div>
     <hr>
@@ -139,7 +139,7 @@
     <hr>
     <div class="form-group">
       <%= f.label :付款方式 %>
-      <%= f.select :paymentmenthod_id, Paymentmethod.where(:company_id=>current_user.company_id).all.collect{ |p| [p.name,p.id] } ,{},:class=>'form-control'%>
+      <%= f.select :paymentmethod_id, @paymentmethods.collect{ |p| [p.name,p.id] } ,{},:class=>'form-control'%>
       <%= f.label :总计 %>
       <%= f.number_field :total, :readonly => true,:class=>'form-control'%>
         <%= f.label :代收货款 %>

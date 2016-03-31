@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160319013835) do
+ActiveRecord::Schema.define(version: 20160331091045) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -116,14 +116,15 @@ ActiveRecord::Schema.define(version: 20160319013835) do
     t.integer  "consignor_id"
     t.integer  "consignee_id"
     t.integer  "proxycollection"
-    t.integer  "truck_id"
+    t.integer  "depart_id"
     t.integer  "company_id"
     t.integer  "user_id"
-    t.integer  "paymentmenthod_id"
+    t.integer  "paymentmethod_id"
     t.integer  "line_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "ThatValue"
+    t.boolean  "waitnotice"
   end
 
 end

@@ -31,9 +31,11 @@ class ConsigneesController < ApplicationController
     @consignee.company_id = current_user.company_id
     respond_to do |format|
       if @consignee.save
+        format.js
         format.html { redirect_to @consignee, notice: 'Consignee was successfully created.' }
         format.json { render :show, status: :created, location: @consignee }
       else
+        format.js
         format.html { render :new }
         format.json { render json: @consignee.errors, status: :unprocessable_entity }
       end

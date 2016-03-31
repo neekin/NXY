@@ -1,12 +1,1 @@
-<% if @consignor.errors.blank? %>
-  var selector = '#waybillorder_consignor_id';
-  $.get(location.href, function(html) {
-    var doc = $(html).find(selector);
-    $(selector).replaceWith(doc);
-  });
-  bootbox.hideAll();
-<% else %>
-  var html = "<%= j(render('form', remote: true)) %>";
-  $('form.new_address').replaceWith(html);
-<% end %>
-
+alert("hahah");

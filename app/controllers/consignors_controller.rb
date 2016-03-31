@@ -32,9 +32,11 @@ class ConsignorsController < ApplicationController
     respond_to do |format|
       if @consignor.save
         format.html { redirect_to @consignor, notice: 'Consignor was successfully created.' }
+        format.js
         format.json { render :show, status: :created, location: @consignor }
       else
         format.html { render :new }
+        format.js
         format.json { render json: @consignor.errors, status: :unprocessable_entity }
       end
     end
@@ -46,9 +48,11 @@ class ConsignorsController < ApplicationController
     respond_to do |format|
       if @consignor.update(consignor_params)
         format.html { redirect_to @consignor, notice: 'Consignor was successfully updated.' }
+        format.js
         format.json { render :show, status: :ok, location: @consignor }
       else
         format.html { render :edit }
+        format.js
         format.json { render json: @consignor.errors, status: :unprocessable_entity }
       end
     end
