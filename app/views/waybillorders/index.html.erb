@@ -24,6 +24,7 @@
       <th>收货人</th>
       <th>代收货款</th>
       <th>付款方式</th>
+      <th>等通知发货</th>
       <th colspan="5"></th>
     </tr>
     </thead>
@@ -39,11 +40,11 @@
           <td><%= waybillorder.transferDestintion %></td>
           <td><%= waybillorder.otherCost %></td>
           <td><%= waybillorder.total %></td>
-          <td><%= waybillorder.consignor.name %></td>
-          <td><%= waybillorder.consignee.name %></td>
+          <td><%= waybillorder.consignor == nil ? "": waybillorder.consignor.name %></td>
+          <td><%= waybillorder.consignee == nil ? "":waybillorder.consignee.name %></td>
           <td><%= waybillorder.proxycollection %></td>
-
-          <td><%= waybillorder.paymentmethod.name %></td>
+          <td><%= waybillorder.paymentmethod == nil ? "":waybillorder.paymentmethod.name %></td>
+          <td><%= if waybillorder.waitnotice then "是" else "否" end %></td>
           <td><%= link_to '打印', print_path(waybillorder) %></td>
           <td><%= link_to '装车', waybillorder %></td>
           <td><%= link_to '查看', waybillorder %></td>
