@@ -219,6 +219,11 @@ label {
       top: 290px;
       left:80px ;
     }
+    .waitnotice{
+      top: 290px;
+      left:580px ;
+      border: 1px solid #000000;
+    }
 
 
     .date,
@@ -255,7 +260,9 @@ label {
     .ThatValue,
     .insuranceCost,
     .total,
-    .loginname {
+    .loginname,
+    .waitnotice
+    {
       position: absolute;
     }
 
