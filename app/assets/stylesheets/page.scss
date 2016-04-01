@@ -54,6 +54,10 @@ label {
   .noprint {
     display: none;
   }
+  @page{
+      margin-top:7.5mm;
+      margin-left: 10mm;
+  }
 }
 
 .waybillorders-print {
