@@ -3,7 +3,7 @@
 <div id="printarea">
 
   <div class="date"><span class="noprint ">发货日期:</span>
-    <%= @waybillorder.created_at.localtime.strftime("%Y-%m-%d") %>
+    <%= @waybillorder.created_at.strftime("%Y-%m-%d") %>
   </div>
 
   <div class="place"><span class="noprint ">发站:</span>   <%= @waybillorder.line.place %></div>
