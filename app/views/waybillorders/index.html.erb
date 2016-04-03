@@ -1,21 +1,20 @@
-
-
 <style>
-  td{
-      text-align: center;
-  }
+    td,th{
+        text-align: center;
+    }
 </style>
 <div class="container">
   <p id="notice"><%= notice %></p>
-
+  <%= link_to '开单', new_waybillorder_path ,:class=>'btn btn-primary' %>
   <h1>所有运单</h1>
+
+
   <table class="table">
     <thead>
     <tr>
       <th>装货日期</th>
       <th>运单号</th>
       <th>运费</th>
-
       <th>是否中转</th>
       <th>中转费</th>
       <th>中转地</th>
@@ -31,12 +30,15 @@
     </thead>
 
     <tbody>
-    <% @waybillorders.each do |waybillorder| %>
+    <% @waybillorders_group.each do |line, waybillorders| %>
+    <tr><th colspan="17">
+    <h3>  <%=line.destination%></h3>
+    </th></tr>
+        <% waybillorders.each do | waybillorder| %>
         <tr>
           <td><%= waybillorder.created_at.strftime("%Y-%m-%d")  %></td>
           <td><%= waybillorder.orderNum %></td>
           <td><%= waybillorder.freightCost %></td>
-
           <td><%= if  waybillorder.isTransfer then  "是" else "否"  end%></td>
           <td><%= waybillorder.transferCost %></td>
           <td><%= waybillorder.transferDestintion %></td>
@@ -53,12 +55,10 @@
           <td><%= link_to '编辑', edit_waybillorder_path(waybillorder) %></td>
           <td><%= link_to '删除', waybillorder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
+        <% end %>
     <% end %>
     </tbody>
   </table>
-  <br>
 
-  <%= link_to '开单', new_waybillorder_path %>
 
 </div>
-

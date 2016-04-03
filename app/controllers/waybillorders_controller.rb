@@ -4,7 +4,7 @@ class WaybillordersController < ApplicationController
   # GET /waybillorders
   # GET /waybillorders.json
   def index
-    @waybillorders = Waybillorder.includes(:consignee).includes(:consignor).where(:company_id => current_user.company_id).order(:created_at=>'desc').all
+    @waybillorders_group = Waybillorder.includes(:consignee).includes(:consignor).includes(:line).where(:company_id => current_user.company_id).order(:line_id=>"asc").order(:created_at=>'desc').all.group_by {|w| w.line}
   end
 
   # GET /waybillorders/1
