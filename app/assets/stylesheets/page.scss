@@ -55,11 +55,12 @@ label {
     display: none;
   }
   @page{
-      margin-top:7.5mm;
+      margin-top:7mm;
       margin-left: 10mm;
       margin-right: 0;
       margin-bottom: 0;
-      size:240mm  140mm;
+    
+
   }
 
 
@@ -100,8 +101,8 @@ label {
   .loginname,
   .waitnotice
   {
-
-    font-size: 1.3em;
+    font-size: 18px;
+    //font-size: 1.3em;
   }
 }
 
