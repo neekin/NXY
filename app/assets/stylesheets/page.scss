@@ -61,6 +61,48 @@ label {
       margin-bottom: 0;
       size:240mm  140mm;
   }
+
+
+  .date,
+  .place,
+  .destination,
+  .transferDestintion,
+  .ordernum,
+  .consignor,
+  .consignee,
+  .consignor_phone,
+  .consignee_phone,
+  .address,
+  .goodname1,
+  .number1,
+  .weight1,
+  .volume1,
+  .googdName2,
+  .number2,
+  .weight2,
+  .volume2,
+  .goodsName3,
+  .number3,
+  .weight3,
+  .volume3,
+  .freightCost,
+  .packingCost,
+  .deliverCost,
+  .acceptCost,
+  .isTransfer,
+  .transferCost,
+  .otherCost,
+  .proxycollection,
+  .paymentmenthod,
+  .ThatValue,
+  .insuranceCost,
+  .total,
+  .loginname,
+  .waitnotice
+  {
+
+    font-size: 1.3em;
+  }
 }
 
 .waybillorders-print {
@@ -269,6 +311,7 @@ label {
     .waitnotice
     {
       position: absolute;
+
     }
 
   }
