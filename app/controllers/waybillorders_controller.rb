@@ -54,7 +54,7 @@ class WaybillordersController < ApplicationController
     @waybillorder.company_id = current_user.company_id
     respond_to do |format|
       if @waybillorder.save
-         @waybillorder.orderNum = Line.find(waybillorder_params[:line_id]).prefix + if @waybillorder.id < 99 then ("%03d" % @waybillorder.id) else @waybillorder.id.to_s end +"-"+ @waybillorder.number1.to_s
+         @waybillorder.orderNum = Line.find(waybillorder_params[:line_id]).prefix + if @waybillorder.id < 99 then ("%03d" % @waybillorder.id) else @waybillorder.id.to_s[-3,3] end +"-"+ @waybillorder.number1.to_s
          @waybillorder.save
         format.html { redirect_to @waybillorder, notice: 'Waybillorder was successfully created.' }
         format.json { render :show, status: :created, location: @waybillorder }
