@@ -50,6 +50,9 @@
     <% if @waybillorder.waitnotice %>
     <div class="waitnotice">等通知发货</div>
     <% end %>
+  <% if @waybillorder.proxycollection > 0 %>
+      <div class="proxycollnotice">有代收货款</div>
+  <% end %>
     <div class="total"><span class="noprint">总计:</span> <%= @waybillorder.total %></div>
     <div class="loginname"><span class="noprint">开票人:</span> <%= @waybillorder.user.loginname %></div>
 
