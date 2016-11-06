@@ -41,14 +41,6 @@ ActiveRecord::Schema.define(version: 20160331091045) do
     t.integer  "line_id"
   end
 
-  create_table "costrules", force: :cascade do |t|
-    t.integer  "consignee_id"
-    t.integer  "volumePrice"
-    t.integer  "weightPrice"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "departs", force: :cascade do |t|
     t.date     "departureTime"
     t.integer  "line_id"

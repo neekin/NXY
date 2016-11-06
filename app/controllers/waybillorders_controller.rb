@@ -4,7 +4,29 @@ class WaybillordersController < ApplicationController
   # GET /waybillorders
   # GET /waybillorders.json
   def index
-    @waybillorders_group = Waybillorder.includes(:consignee).includes(:consignor).includes(:line).where(:company_id => current_user.company_id).order(:line_id=>"asc").order(:created_at=>'desc').all.group_by {|w| w.line}
+    waylist=[]
+    Line.where(:company_id => current_user.company_id).each do |l|
+         waylist+= Waybillorder.where(:line_id=>l.id)
+                             .joins(:consignor)
+                             .joins(:line)
+                             .order(:line_id=>"asc")
+                             .order(:created_at=>'desc')
+                             .all.limit(100)
+    end
+    @waybillorders_group = waylist.group_by{|w| w.line}
+    # @waybillorders_group = 
+    #            Waybillorder.joins(:consignee)
+    #                         .joins(:consignor)
+    #                         .joins(:line)
+    #                         .where(:company_id => current_user.company_id)
+    #                         .order(:line_id=>"asc")
+    #                         .order(:created_at=>'desc')
+    #                         .all.limit(500)
+    #                         .group(:line)
+    #                         .group_by{|w| w.line}
+                            
+                            
+                       
   end
 
   # GET /waybillorders/1
