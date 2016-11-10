@@ -25,7 +25,7 @@
       <th>代收货款</th>
       <th>付款方式</th>
       <th>等通知发货</th>
-      <!--<th colspan="5"></th>-->
+      <th colspan="5"></th>
     </tr>
     </thead>
 
@@ -36,7 +36,7 @@
     </th></tr>
         <% waybillorders.each do | waybillorder| %>
         <tr>
-          <td><%= Date.parse(waybillorder.created_at).strftime("%Y-%m-%d")  %></td>
+         <td><%= waybillorder.created_at.strftime("%Y-%m-%d")  %></td>
           <td><%= waybillorder.orderNum %></td>
           <td><%= waybillorder.freightCost %></td>
           <td><%= if  waybillorder.isTransfer then  "是" else "否"  end%></td>
@@ -49,11 +49,11 @@
           <td><%= waybillorder.proxycollection %></td>
           <td><%= waybillorder.paymentmethod == nil ? "": waybillorder.paymentmethod.name %></td>
           <td><%= if waybillorder.waitnotice then "是" else "否" end %></td>
-          <!--<td><%= link_to '打印', print_path(waybillorder) %></td>
+          <td><%= link_to '打印', print_path(waybillorder) %></td>
           <td><%= link_to '装车', waybillorder %></td>
           <td><%= link_to '查看', waybillorder %></td>
           <td><%= link_to '编辑', edit_waybillorder_path(waybillorder) %></td>
-          <td><%= link_to '删除', waybillorder, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+          <td><%= link_to '删除', waybillorder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
         <% end %>
     <% end %>
